@@ -141,7 +141,10 @@ void Doc::TransformXML(MSXML2::IXSLTemplatePtr tp,MSXML2::IXMLDOMDocument2Ptr do
   ::CloseHandle(::CreateThread(NULL,0,XMLTransformThread,arg,0,NULL));
 
   // now stuff the data into mshtml
-  IPersistStreamInitPtr	ips(dest.Browser()->Document);
+  CComPtr<IDispatch> disp;
+  dest.Browser()->get_Document(&disp);
+  IPersistStreamInitPtr	ips;
+  disp.QueryInterface(&ips);
   ips->InitNew();
   ips->Load(U::NewStream(hRd));
 }
@@ -181,7 +184,7 @@ bool	Doc::LoadFromDOM(HWND hWndParent,MSXML2::IXMLDOMDocument2 *dom) {
     m_desc.Create(hWndParent, CRect(0,0,500,500), _T("{8856F961-340A-11D0-A96B-00C04FD705A2}"));
 
     // navigate to blank page
-    m_desc.Browser()->Navigate(L"about:blank");
+    m_desc.Browser()->Navigate(L"about:blank", &variant_t(), &variant_t(), &variant_t(), &variant_t());
 
     // run a message loop until it loads
     MSG	  msg;
@@ -211,7 +214,7 @@ bool	Doc::LoadFromDOM(HWND hWndParent,MSXML2::IXMLDOMDocument2 *dom) {
     m_body.Create(hWndParent, CRect(0,0,500,500), _T("{8856F961-340A-11D0-A96B-00C04FD705A2}"));
 
     // navigate body browser
-    m_body.Browser()->Navigate(L"about:blank");
+    m_body.Browser()->Navigate(L"about:blank", &variant_t(), &variant_t(), &variant_t(), &variant_t());
 
     // wait until it loads
     while (!m_body.Loaded() && ::GetMessage(&msg,NULL,0,0)) {

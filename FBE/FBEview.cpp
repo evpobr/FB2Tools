@@ -46,7 +46,7 @@ LRESULT CFBEView::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
     return 1;
   if (!SUCCEEDED(QueryControl(&m_browser)))
     return 1;
-  m_browser->Silent = VARIANT_TRUE;  
+  m_browser->put_Silent(VARIANT_TRUE);  
 
   // register browser events handler
   BrowserEvents::DispEventAdvise(m_browser,&DIID_DWebBrowserEvents2);
@@ -1434,7 +1434,9 @@ void  CFBEView::OnDocumentComplete(IDispatch *pDisp,VARIANT *vtUrl) {
 
 void  CFBEView::Init() {
   // save document pointer
-  m_hdoc=m_browser->Document;
+	CComPtr<IDispatch> disp;
+	m_browser->get_Document(&disp);
+	disp.QueryInterface(&m_hdoc);
 
   m_mk_srv=m_hdoc;
   m_mkc=m_hdoc;
@@ -1487,7 +1489,7 @@ void  CFBEView::Init() {
   }
 
   // turn off browser's d&d
-  m_browser->RegisterAsDropTarget=VARIANT_FALSE;
+  m_browser->put_RegisterAsDropTarget(VARIANT_FALSE);
 
   m_initialized=true;
 }

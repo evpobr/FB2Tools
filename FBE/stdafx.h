@@ -72,10 +72,10 @@ extern CString			  _SettingsPath;
 #import "vbscript3.tlb"
 
 // mshtml additional includes
+#include <exdisp.h>
 #include <exdispid.h>
 #include <mshtmdid.h>
 #include <mshtmcid.h>
-#import <shdocvw.dll> rename_namespace("SHD")
 #import <mshtml.tlb>
 
 // use com utils
