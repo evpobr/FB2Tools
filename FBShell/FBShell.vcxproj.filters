@@ -62,140 +62,131 @@
     <ClCompile Include="StdAfx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jcomapi.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdapimin.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdapistd.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdcoefct.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdcolor.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jddctmgr.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdhuff.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdinput.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmainct.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmarker.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmaster.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmerge.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdphuff.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdpostct.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdsample.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdtrans.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jerror.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctfst.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctint.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctred.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jmemmgr.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jmemnobs.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jutils.c">
-      <Filter>libjpeg sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\png.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngerror.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngget.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngmem.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngpread.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngread.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrio.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrtran.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrutil.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngset.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngtrans.c">
-      <Filter>libpng sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\adler32.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\crc32.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infblock.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infcodes.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inffast.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inflate.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inftrees.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infutil.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\uncompr.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\zutil.c">
-      <Filter>zlib sources</Filter>
-    </ClCompile>
     <ClCompile Include="3rdParty\HR Stable\Image.cpp">
       <Filter>ImageLib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\inftrees.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\uncompr.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\zutil.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\inflate.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\inffast.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\crc32.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\zlib\adler32.c">
+      <Filter>zlib sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\png.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngerror.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngget.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngmem.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngpread.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngread.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrio.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrtran.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrutil.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngset.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngtrans.c">
+      <Filter>libpng sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jcomapi.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdapimin.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdapistd.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdcoefct.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdcolor.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jddctmgr.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdhuff.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdinput.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmainct.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmarker.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmaster.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmerge.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdphuff.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdpostct.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdsample.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdtrans.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jerror.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctfst.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctint.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctred.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jmemmgr.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jmemnobs.c">
+      <Filter>libjpeg sources</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jutils.c">
+      <Filter>libjpeg sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,71 +199,71 @@
     <ClInclude Include="StdAfx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jconfig.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jdct.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jdhuff.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jerror.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jinclude.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jmemsys.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jmorecfg.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jpegint.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jpeglib.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libjpeg\jversion.h">
-      <Filter>libjpeg headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libpng\png.h">
-      <Filter>libpng headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\libpng\pngconf.h">
-      <Filter>libpng headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\infblock.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\infcodes.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\inffast.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\inffixed.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\inftrees.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\infutil.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\zconf.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\zlib.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HR Stable\zlib\zutil.h">
-      <Filter>zlib headers</Filter>
-    </ClInclude>
     <ClInclude Include="3rdParty\HR Stable\Image.h">
       <Filter>ImageLib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\infblock.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\infcodes.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\inffast.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\inffixed.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\inftrees.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\infutil.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\zconf.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\zlib.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\zlib\zutil.h">
+      <Filter>zlib headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libpng\png.h">
+      <Filter>libpng headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libpng\pngconf.h">
+      <Filter>libpng headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jconfig.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jdct.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jdhuff.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jerror.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jinclude.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jmemsys.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jmorecfg.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jpegint.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jpeglib.h">
+      <Filter>libjpeg headers</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jversion.h">
+      <Filter>libjpeg headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -75,7 +75,7 @@ IDR_CONTEXTMENU         REGISTRY DISCARDABLE    "ContextMenu.rgs"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_FB2                 ICON    DISCARDABLE     "..\\..\\HR Stable\\res\\FB.ico"
+IDI_FB2                 ICON    DISCARDABLE     "res\\FB.ico"
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 

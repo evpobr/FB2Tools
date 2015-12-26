@@ -2,7 +2,7 @@
 #include "resource.h"
 
 #include "FBShell.h"
-#include "../../HR Stable/Image.h"
+#include "Image.h"
 
 // a MemReader helper class
 class MemReader : public ImageLoader::BinReader {
@@ -100,18 +100,18 @@ public:
   END_COM_MAP()
 
   // ISAXContentHandler
-  STDMETHOD(raw_characters)(wchar_t *chars,int nch);
+  STDMETHOD(raw_characters)(USHORT *chars,int nch);
   STDMETHOD(raw_endDocument)() { return S_OK; }
   STDMETHOD(raw_startDocument)() { return S_OK; }
-  STDMETHOD(raw_endElement)(wchar_t *nsuri,int nslen,wchar_t *name,int namelen,
-			    wchar_t *qname,int qnamelen);
-  STDMETHOD(raw_startElement)(wchar_t *nsuri,int nslen,wchar_t *name,int namelen,
-			      wchar_t *qname,int qnamelen,MSXML2::ISAXAttributes *attr);
-  STDMETHOD(raw_ignorableWhitespace)(wchar_t *spc,int spclen) { return S_OK; }
-  STDMETHOD(raw_endPrefixMapping)(wchar_t *prefix,int len) { return S_OK; }
-  STDMETHOD(raw_startPrefixMapping)(wchar_t *prefix,int plen,wchar_t *uri,int urilen) { return S_OK; }
-  STDMETHOD(raw_processingInstruction)(wchar_t *targ,int targlen,wchar_t *data,int datalen) { return S_OK; }
-  STDMETHOD(raw_skippedEntity)(wchar_t *name,int namelen) { return S_OK; }
+  STDMETHOD(raw_endElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
+	  USHORT *qname,int qnamelen);
+  STDMETHOD(raw_startElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
+	  USHORT *qname,int qnamelen,MSXML2::ISAXAttributes *attr);
+  STDMETHOD(raw_ignorableWhitespace)(USHORT *spc,int spclen) { return S_OK; }
+  STDMETHOD(raw_endPrefixMapping)(USHORT *prefix,int len) { return S_OK; }
+  STDMETHOD(raw_startPrefixMapping)(USHORT *prefix,int plen, USHORT *uri,int urilen) { return S_OK; }
+  STDMETHOD(raw_processingInstruction)(USHORT *targ,int targlen, USHORT *data,int datalen) { return S_OK; }
+  STDMETHOD(raw_skippedEntity)(USHORT *name,int namelen) { return S_OK; }
   STDMETHOD(raw_putDocumentLocator)(MSXML2::ISAXLocator *loc) { return S_OK; }
 
   // data access
@@ -163,7 +163,7 @@ bool    IconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&d
 
   rdr->putContentHandler(ch);
 
-  rdr->raw_parseURL((wchar_t *)filename);
+  rdr->raw_parseURL((USHORT *)filename);
   if (!ch->Ok())
     return false;
 
@@ -174,21 +174,21 @@ bool    IconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&d
   return true;
 }
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_endElement(wchar_t *nsuri,int nslen,
-							  wchar_t *name,int namelen,
-							  wchar_t *qname,int qnamelen)
+HRESULT	IconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
+	USHORT *name,int namelen,
+	USHORT *qname,int qnamelen)
 {
   // all elements must be in a fictionbook namespace
-  if (!StrEQ(FBNS,nsuri,nslen))
+  if (!StrEQ(FBNS,(wchar_t*)nsuri,nslen))
     return E_FAIL;
 
   switch (m_mode) {
   case NONE:
-    if (StrEQ(L"description",name,namelen) && m_cover_id.IsEmpty())
+    if (StrEQ(L"description", (wchar_t*)name,namelen) && m_cover_id.IsEmpty())
 	return E_FAIL;
     break;
   case COVERPAGE:
-    if (StrEQ(L"coverpage",name,namelen)) {
+    if (StrEQ(L"coverpage", (wchar_t*)name,namelen)) {
       if (m_cover_id.IsEmpty())
 	return E_FAIL;
       m_mode=NONE;
@@ -205,20 +205,20 @@ HRESULT	IconExtractor::ContentHandlerImpl::raw_endElement(wchar_t *nsuri,int nsl
   return S_OK;
 }
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_startElement(wchar_t *nsuri,int nslen,
-							    wchar_t *name,int namelen,
-							    wchar_t *qname,int qnamelen,
-							    MSXML2::ISAXAttributes *attr)
+HRESULT	IconExtractor::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int nslen,
+	USHORT *name,int namelen,
+	USHORT *qname,int qnamelen,
+	MSXML2::ISAXAttributes *attr)
 {
   // all elements must be in a fictionbook namespace
-  if (!StrEQ(FBNS,nsuri,nslen))
+  if (!StrEQ(FBNS, (wchar_t*)nsuri,nslen))
     return E_FAIL;
 
   switch (m_mode) {
   case NONE:
-    if (StrEQ(L"coverpage",name,namelen))
+    if (StrEQ(L"coverpage", (wchar_t*)name,namelen))
       m_mode=COVERPAGE;
-    else if (StrEQ(L"binary",name,namelen)) {
+    else if (StrEQ(L"binary", (wchar_t*)name,namelen)) {
       if (m_cover_id.IsEmpty()) // invalid file
 	return E_FAIL;
       if (m_cover_id!=GetAttr(attr,L"id"))
@@ -238,7 +238,7 @@ HRESULT	IconExtractor::ContentHandlerImpl::raw_startElement(wchar_t *nsuri,int n
     }
     break;
   case COVERPAGE:
-    if (StrEQ(L"image",name,namelen)) {
+    if (StrEQ(L"image", (wchar_t*)name,namelen)) {
       CString	tmp(GetAttr(attr,L"href",XLINKNS));
       if (tmp.GetLength()>1 && tmp[0]==_T('#')) {
 	m_cover_id=tmp;
@@ -269,7 +269,7 @@ static BYTE	g_base64_table[256]={
 65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65
 };
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_characters(wchar_t *chars,int nch) {
+HRESULT	IconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch) {
   if (m_mode!=DATA)
     return S_OK;
 
@@ -281,7 +281,7 @@ HRESULT	IconExtractor::ContentHandlerImpl::raw_characters(wchar_t *chars,int nch
   BYTE	  *data=m_data+m_data_ptr;
   DWORD	  space=m_data_length-m_data_ptr;
 
-  for (wchar_t *chars_end=chars+nch;chars<chars_end;++chars) {
+  for (wchar_t *chars_end= (wchar_t*)chars+nch; (wchar_t*)chars<chars_end; (wchar_t*)++chars) {
     BYTE     bits=g_base64_table[*chars & 0xff]; // not my problem if it wraps
     switch (bits) {
     case 64: // end of data

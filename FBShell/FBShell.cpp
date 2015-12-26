@@ -134,7 +134,7 @@ CString	GetAttr(MSXML2::ISAXAttributes *attr,const wchar_t *name,const wchar_t *
   int vlen;
   wchar_t *val;
 
-  if (FAILED(attr->raw_getValueFromName((wchar_t*)ns,nslen,(wchar_t*)name,nlen,&val,&vlen)))
+  if (FAILED(attr->raw_getValueFromName((USHORT*)ns,nslen,(USHORT*)name,nlen, (USHORT**)&val,&vlen)))
     return CString();
 
   CString ret(val,vlen);

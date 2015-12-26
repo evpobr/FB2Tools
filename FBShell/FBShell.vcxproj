@@ -14,6 +14,7 @@
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{FA66D11A-A69F-439B-8430-686BAAB2368C}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -21,6 +22,7 @@
     <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -41,14 +43,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Debug\</OutDir>
-    <IntDir>.\Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\Release\</OutDir>
-    <IntDir>.\Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
   </PropertyGroup>
@@ -62,12 +60,8 @@
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>3rdParty\HR Stable\libjpeg;3rdParty\HR Stable\libpng;3rdParty\HR Stable\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>3rdParty\HR Stable\\libjpeg\;3rdParty\HR Stable\libpng\;3rdParty\HR Stable\zlib\;3rdParty\HR Stable\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;UNICODE;_USRDLL;STANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
-      <PrecompiledHeaderOutputFile>.\Debug\FBShell.pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName>.\Debug\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Midl>
@@ -83,34 +77,30 @@
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Debug\FBShell.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <OutputFile>.\Debug\FBShell.dll</OutputFile>
-      <ImportLibrary>.\Debug\FBShell.lib</ImportLibrary>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>.\FBShell.def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
-      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>3rdParty\HR Stable\libjpeg;3rdParty\HR Stable\libpng;3rdParty\HR Stable\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>3rdParty\HR Stable\\libjpeg\;3rdParty\HR Stable\libpng\;3rdParty\HR Stable\zlib\;3rdParty\HR Stable\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;UNICODE;_USRDLL;STANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
-      <PrecompiledHeaderOutputFile>.\Release\FBShell.pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName>.\Release\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
       <AdditionalOptions> /Oxs </AdditionalOptions>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -125,152 +115,144 @@
     </ResourceCompile>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Release\FBShell.bsc</OutputFile>
     </Bscmake>
     <Link>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
-      <SubSystem>Console</SubSystem>
-      <OutputFile>.\Release\FBShell.dll</OutputFile>
-      <ImportLibrary>.\Release\FBShell.lib</ImportLibrary>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>.\FBShell.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="3rdParty\HR Stable\Image.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jcomapi.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jcomapi.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdapimin.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdapimin.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdapistd.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdapistd.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdcoefct.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdcoefct.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdcolor.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdcolor.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jddctmgr.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jddctmgr.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdhuff.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdhuff.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdinput.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdinput.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmainct.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmainct.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmarker.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmarker.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmaster.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmaster.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdmerge.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdmerge.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdphuff.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdphuff.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdpostct.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdpostct.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdsample.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdsample.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jdtrans.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jdtrans.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jerror.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jerror.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctfst.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctfst.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctint.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctint.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jidctred.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jidctred.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jmemmgr.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jmemmgr.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jmemnobs.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jmemnobs.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libjpeg\jutils.c">
+    <ClCompile Include="3rdParty\HR Stable\libjpeg\jutils.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\png.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\png.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngerror.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngerror.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngget.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngget.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngmem.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngmem.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngpread.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngpread.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngread.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngread.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrio.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrio.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrtran.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrtran.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngrutil.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngrutil.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngset.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngset.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\libpng\pngtrans.c">
+    <ClCompile Include="3rdParty\HR Stable\libpng\pngtrans.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\adler32.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\adler32.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\crc32.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\crc32.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infblock.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\inffast.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infcodes.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\inflate.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inffast.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\inftrees.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inflate.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\uncompr.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\inftrees.c">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\infutil.c">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\uncompr.c">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="..\..\HR Stable\zlib\zutil.c">
+    <ClCompile Include="3rdParty\HR Stable\zlib\zutil.c">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /Oxs   /Oxs </AdditionalOptions>
     </ClCompile>
     <ClCompile Include="ColumnProvider.cpp">
@@ -298,27 +280,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3rdParty\HR Stable\Image.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jconfig.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jdct.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jdhuff.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jerror.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jinclude.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jmemsys.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jmorecfg.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jpegint.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jpeglib.h" />
-    <ClInclude Include="..\..\HR Stable\libjpeg\jversion.h" />
-    <ClInclude Include="..\..\HR Stable\libpng\png.h" />
-    <ClInclude Include="..\..\HR Stable\libpng\pngconf.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\infblock.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\infcodes.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\inffast.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\inffixed.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\inftrees.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\infutil.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\zconf.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\zlib.h" />
-    <ClInclude Include="..\..\HR Stable\zlib\zutil.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jconfig.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jdct.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jdhuff.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jerror.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jinclude.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jmemsys.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jmorecfg.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jpegint.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jpeglib.h" />
+    <ClInclude Include="3rdParty\HR Stable\libjpeg\jversion.h" />
+    <ClInclude Include="3rdParty\HR Stable\libpng\png.h" />
+    <ClInclude Include="3rdParty\HR Stable\libpng\pngconf.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\infblock.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\infcodes.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\inffast.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\inffixed.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\inftrees.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\infutil.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\zconf.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\zlib.h" />
+    <ClInclude Include="3rdParty\HR Stable\zlib\zutil.h" />
     <ClInclude Include="FBShell.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StdAfx.h" />

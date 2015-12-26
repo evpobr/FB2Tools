@@ -112,18 +112,18 @@ public:
   END_COM_MAP()
 
   // ISAXContentHandler
-  STDMETHOD(raw_characters)(wchar_t *chars,int nch);
+  STDMETHOD(raw_characters)(USHORT *chars,int nch);
   STDMETHOD(raw_endDocument)() { return S_OK; }
   STDMETHOD(raw_startDocument)() { return S_OK; }
-  STDMETHOD(raw_endElement)(wchar_t *nsuri,int nslen,wchar_t *name,int namelen,
-			    wchar_t *qname,int qnamelen);
-  STDMETHOD(raw_startElement)(wchar_t *nsuri,int nslen,wchar_t *name,int namelen,
-			      wchar_t *qname,int qnamelen,MSXML2::ISAXAttributes *attr);
-  STDMETHOD(raw_ignorableWhitespace)(wchar_t *spc,int spclen) { return S_OK; }
-  STDMETHOD(raw_endPrefixMapping)(wchar_t *prefix,int len) { return S_OK; }
-  STDMETHOD(raw_startPrefixMapping)(wchar_t *prefix,int plen,wchar_t *uri,int urilen) { return S_OK; }
-  STDMETHOD(raw_processingInstruction)(wchar_t *targ,int targlen,wchar_t *data,int datalen) { return S_OK; }
-  STDMETHOD(raw_skippedEntity)(wchar_t *name,int namelen) { return S_OK; }
+  STDMETHOD(raw_endElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
+	  USHORT *qname,int qnamelen);
+  STDMETHOD(raw_startElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
+	  USHORT *qname,int qnamelen,MSXML2::ISAXAttributes *attr);
+  STDMETHOD(raw_ignorableWhitespace)(USHORT *spc,int spclen) { return S_OK; }
+  STDMETHOD(raw_endPrefixMapping)(USHORT *prefix,int len) { return S_OK; }
+  STDMETHOD(raw_startPrefixMapping)(USHORT *prefix,int plen, USHORT *uri,int urilen) { return S_OK; }
+  STDMETHOD(raw_processingInstruction)(USHORT *targ,int targlen, USHORT *data,int datalen) { return S_OK; }
+  STDMETHOD(raw_skippedEntity)(USHORT *name,int namelen) { return S_OK; }
   STDMETHOD(raw_putDocumentLocator)(MSXML2::ISAXLocator *loc) { return S_OK; }
 
 protected:
@@ -168,7 +168,7 @@ HRESULT	ColumnProvider::FBInfo::Init(const wchar_t *fn) {
     ch->SetInfo(this);
     Clear();
 
-    HRESULT hr=rdr->raw_parseURL((wchar_t *)fn);
+    HRESULT hr=rdr->raw_parseURL((USHORT *)fn);
     if (!ch->Ok())
       return FAILED(hr) ? hr : S_FALSE;
 
@@ -202,57 +202,57 @@ void  ColumnProvider::FBInfo::Clear() {
   filename.Empty();
 }
 
-HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(wchar_t *nsuri,int urilen,
-					     wchar_t *name,int namelen,
-					     wchar_t *qname,int qnamelen,
-					     MSXML2::ISAXAttributes *attr)
+HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int urilen,
+	USHORT *name,int namelen,
+	USHORT *qname,int qnamelen,
+	MSXML2::ISAXAttributes *attr)
 {
   // all elements must be in a fictionbook namespace
-  if (!StrEQ(FBNS,nsuri,urilen))
+  if (!StrEQ(FBNS, (wchar_t*)nsuri,urilen))
     return E_FAIL;
 
   ParseMode   next=m_mstack[m_mstack.GetSize()-1];
 
   switch (next) {
   case ROOT:
-    if (!StrEQ(L"FictionBook",name,namelen))
+    if (!StrEQ(L"FictionBook", (wchar_t*)name,namelen))
       return E_FAIL;
     next=TOP;
     break;
   case TOP:
-    if (StrEQ(L"description",name,namelen))
+    if (StrEQ(L"description", (wchar_t*)name,namelen))
       next=DESC;
     break;
   case DESC:
-    if (StrEQ(L"title-info",name,namelen))
+    if (StrEQ(L"title-info", (wchar_t*)name,namelen))
       next=TITLE;
-    else if (StrEQ(L"document-info",name,namelen))
+    else if (StrEQ(L"document-info", (wchar_t*)name,namelen))
       next=DOC;
     break;
   case TITLE:
-    if (StrEQ(L"genre",name,namelen)) {
+    if (StrEQ(L"genre", (wchar_t*)name,namelen)) {
       m_tmp=GetAttr(attr,L"match");
       m_dest=&m_info->title.genres;
       SetPrefix(L", ");
       next=GENRE;
-    } else if (StrEQ(L"author",name,namelen)) {
+    } else if (StrEQ(L"author", (wchar_t*)name,namelen)) {
       next=AUTHOR;
       m_dest=&m_info->title.authors;
       SetPrefix(L", ");
-    } else if (StrEQ(L"book-title",name,namelen)) {
+    } else if (StrEQ(L"book-title", (wchar_t*)name,namelen)) {
       next=GRAB;
       m_dest=&m_info->title.title;
-    } else if (StrEQ(L"lang",name,namelen)) {
+    } else if (StrEQ(L"lang", (wchar_t*)name,namelen)) {
       next=GRAB;
       m_dest=&m_info->title.lang;
-    } else if (StrEQ(L"src-lang",name,namelen)) {
+    } else if (StrEQ(L"src-lang", (wchar_t*)name,namelen)) {
       next=GRAB;
       m_dest=&m_info->title.srclang;
-    } else if (StrEQ(L"date",name,namelen)) {
+    } else if (StrEQ(L"date", (wchar_t*)name,namelen)) {
       next=DATE;
       m_dest=&m_info->title.date;
       m_info->title.dateval=GetAttr(attr,L"value");
-    } else if (StrEQ(L"sequence",name,namelen)) {
+    } else if (StrEQ(L"sequence", (wchar_t*)name,namelen)) {
       CString name(GetAttr(attr,L"name"));
       if (!name.IsEmpty()) {
 	if (!m_info->title.seq.IsEmpty())
@@ -269,30 +269,30 @@ HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(wchar_t *nsuri,int 
     }
     break;
   case DOC:
-    if (StrEQ(L"author",name,namelen)) {
+    if (StrEQ(L"author", (wchar_t*)name,namelen)) {
       next=AUTHOR;
       m_dest=&m_info->doc.authors;
       SetPrefix(L", ");
-    } else if (StrEQ(L"date",name,namelen)) {
+    } else if (StrEQ(L"date", (wchar_t*)name,namelen)) {
       next=DATE;
       m_dest=&m_info->doc.date;
       m_info->doc.dateval=GetAttr(attr,L"value");
-    } else if (StrEQ(L"id",name,namelen)) {
+    } else if (StrEQ(L"id", (wchar_t*)name,namelen)) {
       next=GRAB;
       m_dest=&m_info->doc.id;
-    } else if (StrEQ(L"version",name,namelen)) {
+    } else if (StrEQ(L"version", (wchar_t*)name,namelen)) {
       next=GRAB;
       m_dest=&m_info->doc.ver;
     }
     break;
   case AUTHOR:
-    if (StrEQ(L"nickname",name,namelen)) {
+    if (StrEQ(L"nickname", (wchar_t*)name,namelen)) {
       SetPrefix(L" [",true);
       next=NICK;
-    } else if (StrEQ(L"email",name,namelen)) {
+    } else if (StrEQ(L"email", (wchar_t*)name,namelen)) {
       SetPrefix(L" (",true);
       next=EMAIL;
-    } else if (StrEQ(L"home-page",name,namelen)) {
+    } else if (StrEQ(L"home-page", (wchar_t*)name,namelen)) {
       SetPrefix(L" <",true);
       next=HOME;
     } else
@@ -305,9 +305,9 @@ HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(wchar_t *nsuri,int 
   return S_OK;
 }
 
-HRESULT ColumnProvider::ContentHandlerImpl::raw_endElement(wchar_t *nsuri,int nslen,
-					   wchar_t *name,int namelen,
-					   wchar_t *qname,int qnamelen)
+HRESULT ColumnProvider::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
+	USHORT *name,int namelen,
+	USHORT *qname,int qnamelen)
 {
   ParseMode	cur=m_mstack[m_mstack.GetSize()-1],next=m_mstack[m_mstack.GetSize()-2];
   m_mstack.RemoveAt(m_mstack.GetSize()-1);
@@ -373,12 +373,12 @@ HRESULT ColumnProvider::ContentHandlerImpl::raw_endElement(wchar_t *nsuri,int ns
   return S_OK;
 }
 
-HRESULT ColumnProvider::ContentHandlerImpl::raw_characters(wchar_t *chars,int nch)
+HRESULT ColumnProvider::ContentHandlerImpl::raw_characters(USHORT *chars,int nch)
 {
   if (m_dest) {
     FlushPrefix();
 
-    AppendText(*m_dest,chars,nch);
+    AppendText(*m_dest,(wchar_t*)chars,nch);
   }
 
   return S_OK;
