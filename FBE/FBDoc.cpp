@@ -632,9 +632,9 @@ bool  Doc::SaveToFile(const CString& filename,bool fValidateOnly,
     CheckError(rdr.CreateInstance(L"Msxml2.SAXXMLReader.4.0"));
 
     // attach a schema
-    rdr->putFeature(L"schema-validation",VARIANT_TRUE);
-    rdr->putProperty(L"schemas",scol.GetInterfacePtr());
-    rdr->putFeature(L"exhaustive-errors",VARIANT_TRUE);
+    rdr->putFeature((USHORT*)L"schema-validation",VARIANT_TRUE);
+    rdr->putProperty((USHORT*)L"schemas",scol.GetInterfacePtr());
+    rdr->putFeature((USHORT*)L"exhaustive-errors",VARIANT_TRUE);
 
     // create an error handler
     CComObject<SAXErrorHandler>	  *ehp;
@@ -1063,9 +1063,9 @@ bool  Doc::SetXMLAndValidate(HWND sci,bool fValidateOnly,int& errline,int& errco
     CheckError(rdr.CreateInstance(L"Msxml2.SAXXMLReader.4.0"));
 
     // attach a schema
-    rdr->putFeature(L"schema-validation",VARIANT_TRUE);
-    rdr->putProperty(L"schemas",scol.GetInterfacePtr());
-    rdr->putFeature(L"exhaustive-errors",VARIANT_TRUE);
+    rdr->putFeature((USHORT*)L"schema-validation",VARIANT_TRUE);
+    rdr->putProperty((USHORT*)L"schemas",scol.GetInterfacePtr());
+    rdr->putFeature((USHORT*)L"exhaustive-errors",VARIANT_TRUE);
 
     // create an error handler
     CComObject<SAXErrorHandler>	  *ehp;

@@ -22,7 +22,7 @@ public:
     HRESULT hr=obj->QueryInterface(&srv);
     if (FAILED(hr))
       return hr;
-    hr=srv->raw_BeginUndoUnit(name);
+    hr=srv->raw_BeginUndoUnit((USHORT*)name);
     srv->Release();
     return hr;
   }

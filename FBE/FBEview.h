@@ -121,7 +121,7 @@ public:
 
   long			    GetVersionNumber() { return m_mkc ? m_mkc->GetVersionNumber() : -1; }
 
-  void			    BeginUndoUnit(const wchar_t *name) { m_mk_srv->BeginUndoUnit((wchar_t *)name); }
+  void			    BeginUndoUnit(const wchar_t *name) { m_mk_srv->BeginUndoUnit((USHORT*)name); }
   void			    EndUndoUnit() { m_mk_srv->EndUndoUnit(); }
 
   DECLARE_WND_SUPERCLASS(NULL, CAxWindow::GetWndClassName())
