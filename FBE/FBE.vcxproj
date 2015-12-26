@@ -78,7 +78,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>atls.lib;msvcrt.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>msvcrt.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/FBE.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
@@ -124,7 +124,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>atlsd.lib;msvcrtd.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;uxtheme.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>msvcrtd.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;uxtheme.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/FBE.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
