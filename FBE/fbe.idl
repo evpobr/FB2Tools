@@ -1,0 +1,54 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+  uuid(37B16C7D-4400-4d7d-AA35-14C74E265EA4),
+  version(1.0),
+  helpstring("FictionBook Editor 1.0 Type Library")
+]
+library FBELib
+{
+  importlib("stdole32.tlb");
+  importlib("stdole2.tlb");
+
+  [
+    object,
+    uuid(8094bc55-99c0-4adf-bd55-71e206dfd403),
+    helpstring("IFBEImportPlugin interface"),
+    pointer_default(unique),
+  ]
+  interface IFBEImportPlugin : IUnknown
+  {
+    [id(1), helpstring("method Import")] HRESULT Import([in] long hWnd,[out] BSTR *filename,[out] IDispatch **document);
+  };
+
+  [
+    object,
+    uuid(1afaab7f-6f66-4ef6-b199-16fa49cc5b52),
+    helpstring("IFBEExportPlugin interface"),
+    pointer_default(unique),
+  ]
+  interface IFBEExportPlugin : IUnknown
+  {
+    [id(1), helpstring("method Export")] HRESULT Export([in] long hWnd,[in] BSTR filename,[in] IDispatch *document);
+  };
+
+  [
+    object,
+    uuid(7269066E-2089-4408-B3F3-E8D75984D5A6),
+    dual,
+    helpstring("IExternalHelper interface"),
+    pointer_default(unique)
+  ]
+  interface IExternalHelper : IDispatch
+  {
+    [id(1), helpstring("method BeginUndoUnit")] HRESULT BeginUndoUnit([in] IDispatch *document,[in] BSTR action);
+    [id(2), helpstring("method EndUndoUnit")] HRESULT EndUndoUnit([in] IDispatch *document);
+    [propget, id(3), helpstring("property inflateBlock")]
+      HRESULT inflateBlock([in] IDispatch *elem, [out, retval] BOOL *pVal);
+
+    [propput, id(3), helpstring("property inflateBlock")]
+      HRESULT inflateBlock([in] IDispatch *elem, [in] BOOL newVal);
+	[id(4), helpstring("method GenrePopup")] HRESULT GenrePopup([in] IDispatch *elem,[in] LONG x,[in] LONG y, [out, retval] BSTR *name);
+  };
+};

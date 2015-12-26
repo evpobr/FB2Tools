@@ -1,0 +1,445 @@
+# Microsoft Developer Studio Generated Dependency File, included by FBShell.mak
+
+.\ColumnProvider.cpp : \
+	"..\FBE\wtl\atlapp.h"\
+	"..\FBE\wtl\atlgdi.h"\
+	"..\FBE\wtl\atlmisc.h"\
+	"..\FBE\wtl\atlres.h"\
+	"..\FBE\wtl\atluser.h"\
+	".\FBShell.h"\
+	".\StdAfx.h"\
+	
+
+.\ContextMenu.cpp : \
+	"..\FBE\wtl\atlapp.h"\
+	"..\FBE\wtl\atlgdi.h"\
+	"..\FBE\wtl\atlmisc.h"\
+	"..\FBE\wtl\atlres.h"\
+	"..\FBE\wtl\atluser.h"\
+	".\FBShell.h"\
+	".\StdAfx.h"\
+	
+
+.\FBShell.cpp : \
+	"..\FBE\wtl\atlapp.h"\
+	"..\FBE\wtl\atlgdi.h"\
+	"..\FBE\wtl\atlmisc.h"\
+	"..\FBE\wtl\atlres.h"\
+	"..\FBE\wtl\atluser.h"\
+	".\FBShell.h"\
+	".\StdAfx.h"\
+	
+
+.\IconExtractor.cpp : \
+	"..\..\HR Stable\Image.h"\
+	"..\FBE\wtl\atlapp.h"\
+	"..\FBE\wtl\atlgdi.h"\
+	"..\FBE\wtl\atlmisc.h"\
+	"..\FBE\wtl\atlres.h"\
+	"..\FBE\wtl\atluser.h"\
+	".\FBShell.h"\
+	".\StdAfx.h"\
+	
+
+.\StdAfx.cpp : \
+	"..\FBE\wtl\atlapp.h"\
+	"..\FBE\wtl\atlgdi.h"\
+	"..\FBE\wtl\atlmisc.h"\
+	"..\FBE\wtl\atlres.h"\
+	"..\FBE\wtl\atluser.h"\
+	".\StdAfx.h"\
+	
+
+.\FBSHell.rc : \
+	"..\..\HR Stable\res\FB.ico"\
+	".\ColumnProvider.rgs"\
+	".\ContextMenu.rgs"\
+	".\IconExtractor.rgs"\
+	
+
+"..\..\HR Stable\libjpeg\jcomapi.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdapimin.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdapistd.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdcoefct.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdcolor.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jddctmgr.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdct.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdhuff.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdhuff.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdinput.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdmainct.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdmarker.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdmaster.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdmerge.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdphuff.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdhuff.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdpostct.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdsample.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jdtrans.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jerror.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	"..\..\HR Stable\libjpeg\jversion.h"\
+	
+
+"..\..\HR Stable\libjpeg\jidctfst.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdct.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jidctint.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdct.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jidctred.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jdct.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jmemmgr.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmemsys.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jmemnobs.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmemsys.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libjpeg\jutils.c" : \
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jinclude.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	
+
+"..\..\HR Stable\libpng\png.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngerror.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngget.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngmem.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngpread.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngread.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngrio.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngrtran.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngrutil.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngset.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\libpng\pngtrans.c" : \
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\zlib\adler32.c" : \
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\zlib\crc32.c" : \
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\zlib\infblock.c" : \
+	"..\..\HR Stable\zlib\infblock.h"\
+	"..\..\HR Stable\zlib\infcodes.h"\
+	"..\..\HR Stable\zlib\inftrees.h"\
+	"..\..\HR Stable\zlib\infutil.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\infcodes.c" : \
+	"..\..\HR Stable\zlib\infblock.h"\
+	"..\..\HR Stable\zlib\infcodes.h"\
+	"..\..\HR Stable\zlib\inffast.h"\
+	"..\..\HR Stable\zlib\inftrees.h"\
+	"..\..\HR Stable\zlib\infutil.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\inffast.c" : \
+	"..\..\HR Stable\zlib\infblock.h"\
+	"..\..\HR Stable\zlib\infcodes.h"\
+	"..\..\HR Stable\zlib\inffast.h"\
+	"..\..\HR Stable\zlib\inftrees.h"\
+	"..\..\HR Stable\zlib\infutil.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\inflate.c" : \
+	"..\..\HR Stable\zlib\infblock.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\inftrees.c" : \
+	"..\..\HR Stable\zlib\inffixed.h"\
+	"..\..\HR Stable\zlib\inftrees.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\infutil.c" : \
+	"..\..\HR Stable\zlib\infblock.h"\
+	"..\..\HR Stable\zlib\infcodes.h"\
+	"..\..\HR Stable\zlib\inftrees.h"\
+	"..\..\HR Stable\zlib\infutil.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\zlib\uncompr.c" : \
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
+
+"..\..\HR Stable\zlib\zutil.c" : \
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	"..\..\HR Stable\zlib\zutil.h"\
+	
+
+"..\..\HR Stable\Image.cpp" : \
+	"..\..\HR Stable\config.h"\
+	"..\..\HR Stable\Image.h"\
+	"..\..\HR Stable\libjpeg\jconfig.h"\
+	"..\..\HR Stable\libjpeg\jerror.h"\
+	"..\..\HR Stable\libjpeg\jmorecfg.h"\
+	"..\..\HR Stable\libjpeg\jpegint.h"\
+	"..\..\HR Stable\libjpeg\jpeglib.h"\
+	"..\..\HR Stable\libpng\png.h"\
+	"..\..\HR Stable\libpng\pngconf.h"\
+	"..\..\HR Stable\ptr.h"\
+	"..\..\HR Stable\TextViewNG.h"\
+	"..\..\HR Stable\zlib\zconf.h"\
+	"..\..\HR Stable\zlib\zlib.h"\
+	
