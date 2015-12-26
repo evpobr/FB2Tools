@@ -124,6 +124,20 @@
   <ItemGroup>
     <ResourceCompile Include="FBV.rc" />
   </ItemGroup>
+    <ItemGroup>
+    <None Include="..\FBE\FictionBook.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+      <None Include="..\FBE\FictionBookGenres.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+      <None Include="..\FBE\FictionBookLang.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\FBE\FictionBookLinks.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
