@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FBE", "FBE\FBE.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExportHTML", "FBE\ExportHTML\ExportHTML.vcxproj", "{48189A97-D0ED-4648-A5DD-24F817AD6C42}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FBShell", "FBShell\FBShell.vcxproj", "{FA66D11A-A69F-439B-8430-686BAAB2368C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -40,6 +42,12 @@ Global
 		{48189A97-D0ED-4648-A5DD-24F817AD6C42}.Release|x64.ActiveCfg = Release|Win32
 		{48189A97-D0ED-4648-A5DD-24F817AD6C42}.Release|x86.ActiveCfg = Release|Win32
 		{48189A97-D0ED-4648-A5DD-24F817AD6C42}.Release|x86.Build.0 = Release|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Debug|x64.ActiveCfg = Debug|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Debug|x86.ActiveCfg = Debug|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Debug|x86.Build.0 = Debug|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Release|x64.ActiveCfg = Release|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Release|x86.ActiveCfg = Release|Win32
+		{FA66D11A-A69F-439B-8430-686BAAB2368C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
