@@ -149,13 +149,8 @@
       <Filter>Resources</Filter>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="body.xsl">
-      <Filter>Resources</Filter>
-    </Xml>
-    <Xml Include="description.xsl">
-      <Filter>Resources</Filter>
-    </Xml>
+    <None Include="body.xsl" />
+    <None Include="description.xsl" />
+    <None Include="..\Distrib\Win32\SciLexer.dll" />
   </ItemGroup>
 </Project>
