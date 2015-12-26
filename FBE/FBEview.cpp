@@ -241,7 +241,7 @@ bool  CFBEView::SplitContainer(bool fCheck) {
     // * create an undo unit
     CString   name(L"split ");
     name+=(const wchar_t *)pe->className;
-    m_mk_srv->BeginUndoUnit(((USHORT*)(const TCHAR *)name);
+    m_mk_srv->BeginUndoUnit((USHORT*)(const TCHAR *)name);
 
     // * create a new element
     MSHTML::IHTMLElementPtr   ne(Document()->createElement(L"DIV"));
