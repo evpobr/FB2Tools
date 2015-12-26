@@ -12,6 +12,7 @@
 #endif
 
 // Change these values to use different versions
+#define NTDDI_VERSION	0x05010000
 #define WINVER		0x0501
 #define _WIN32_WINNT	0x0501
 #define _WIN32_IE	0x0501
@@ -37,6 +38,9 @@
 #include <shellapi.h>
 
 #include <atlapp.h>
+
+#define _WTL_USE_VSSYM32
+#include <atltheme.h>
 
 extern CAppModule _Module;
 extern CRegKey	  _Settings;
