@@ -194,7 +194,7 @@
     <ClCompile Include="..\..\HR Stable\zlib\zutil.c">
       <Filter>zlib sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HR Stable\Image.cpp">
+    <ClCompile Include="3rdParty\HR Stable\Image.cpp">
       <Filter>ImageLib sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -271,7 +271,7 @@
     <ClInclude Include="..\..\HR Stable\zlib\zutil.h">
       <Filter>zlib headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HR Stable\Image.h">
+    <ClInclude Include="3rdParty\HR Stable\Image.h">
       <Filter>ImageLib headers</Filter>
     </ClInclude>
   </ItemGroup>
