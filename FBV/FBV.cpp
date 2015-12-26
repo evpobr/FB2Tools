@@ -506,16 +506,16 @@ public:
   STDMETHOD_(ULONG,Release)() { return 1; }
 
   // ISAXErrorHandler
-  STDMETHOD(raw_error)(MSXML2::ISAXLocator *loc, wchar_t *msg, HRESULT hr) {
-    SetMsg(loc,msg,hr);
+  STDMETHOD(raw_error)(MSXML2::ISAXLocator *loc, USHORT* msg, HRESULT hr) {
+    SetMsg(loc,(wchar_t*)msg,hr);
     return E_FAIL;
   }
-  STDMETHOD(raw_fatalError)(MSXML2::ISAXLocator *loc, wchar_t *msg, HRESULT hr) {
-    SetMsg(loc,msg,hr);
+  STDMETHOD(raw_fatalError)(MSXML2::ISAXLocator *loc, USHORT* msg, HRESULT hr) {
+    SetMsg(loc, (wchar_t*)msg,hr);
     return E_FAIL;
   }
-  STDMETHOD(raw_ignorableWarning)(MSXML2::ISAXLocator *loc, wchar_t *msg, HRESULT hr) {
-    SetMsg(loc,msg,hr);
+  STDMETHOD(raw_ignorableWarning)(MSXML2::ISAXLocator *loc, USHORT *msg, HRESULT hr) {
+    SetMsg(loc, (wchar_t*)msg,hr);
     return E_FAIL;
   }
 
@@ -602,9 +602,9 @@ static void   ValidateFiles() {
     CheckError(rdr.CreateInstance(L"Msxml2.SAXXMLReader.4.0"));
 
     // attach a schema
-    rdr->putFeature(L"schema-validation",VARIANT_TRUE);
-    rdr->putProperty(L"schemas",scol.GetInterfacePtr());
-    rdr->putFeature(L"exhaustive-errors",VARIANT_TRUE);
+    rdr->putFeature((USHORT*)L"schema-validation",VARIANT_TRUE);
+    rdr->putProperty((USHORT*)L"schemas",scol.GetInterfacePtr());
+    rdr->putFeature((USHORT*)L"exhaustive-errors",VARIANT_TRUE);
 
     rdr->putErrorHandler(&eh);
 
@@ -634,7 +634,7 @@ static void   ValidateFiles() {
       if (fDV) {
 	::SendDlgItemMessage(g_dialog,IDC_STATUS,SB_SETTEXT,0,(LPARAM)fi->filename);
 	try {
-	  rdr->parseURL(fi->filename);
+	  rdr->parseURL((USHORT*)fi->filename);
 	  SetItemState(i,fi,VALID);
 	}
 	catch (_com_error& e) {
