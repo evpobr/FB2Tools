@@ -78,10 +78,10 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>msvcrt.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;comctl32.lib;urlmon.lib;shlwapi.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/FBE.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <ProgramDatabaseFile>.\Release/FBE.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -97,7 +97,7 @@
       <HeaderFileName />
     </Midl>
     <PreLinkEvent>
-      <Command>cl /nologo /c /Fo"$(IntDir)buildstamp.obj" buildstamp.c</Command>
+      <Command>cl /nologo /c /Fo"$(IntDir)buildstamp.obj" buildstamp.c /MD</Command>
     </PreLinkEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -124,10 +124,10 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>msvcrtd.lib;comctl32.lib;rpcrt4.lib;comsupp.lib;urlmon.lib;shlwapi.lib;uxtheme.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rpcrt4.lib;comctl32.lib;urlmon.lib;shlwapi.lib;uxtheme.lib;$(IntDir)buildstamp.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/FBE.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>uxtheme.lib;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/FBE.pdb</ProgramDatabaseFile>
@@ -143,7 +143,7 @@
       <HeaderFileName />
     </Midl>
     <PreLinkEvent>
-      <Command>cl /nologo /c /Fo"$(IntDir)buildstamp.obj" buildstamp.c</Command>
+      <Command>cl /nologo /c /Fo"$(IntDir)buildstamp.obj" buildstamp.c /MDd</Command>
     </PreLinkEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
