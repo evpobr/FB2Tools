@@ -46,6 +46,7 @@ LRESULT CFBEView::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
     return 1;
   if (!SUCCEEDED(QueryControl(&m_browser)))
     return 1;
+  m_browser->Silent = VARIANT_TRUE;  
 
   // register browser events handler
   BrowserEvents::DispEventAdvise(m_browser,&DIID_DWebBrowserEvents2);
