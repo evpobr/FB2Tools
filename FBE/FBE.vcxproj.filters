@@ -110,9 +110,6 @@
     <ClInclude Include="Words.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="extras\atlgdix.h">
-      <Filter>extras</Filter>
-    </ClInclude>
     <ClInclude Include="extras\ColorButton.h">
       <Filter>extras</Filter>
     </ClInclude>

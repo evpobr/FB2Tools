@@ -234,7 +234,6 @@
     <ClInclude Include="apputils.h" />
     <ClInclude Include="ContainerWnd.h" />
     <ClInclude Include="ExternalHelper.h" />
-    <ClInclude Include="extras\atlgdix.h" />
     <ClInclude Include="extras\ColorButton.h" />
     <ClInclude Include="FBDoc.h" />
     <ClInclude Include="FBEview.h" />
