@@ -266,13 +266,26 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="body.js" />
-    <None Include="desc.js" />
+    <None Include="body.js">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+    <None Include="desc.js">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="body.xsl" />
-    <Xml Include="description.xsl" />
+    <None Include="body.xsl">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+    <None Include="description.xsl">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Distrib\Win32\SciLexer.dll">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
