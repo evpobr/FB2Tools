@@ -12,7 +12,8 @@
 #endif
 
 // Change these values to use different versions
-#define WINVER		0x0400
+#define NTDDI_VERSION	0x05010000
+#define WINVER		0x0501
 #define _WIN32_WINNT	0x0501
 #define _WIN32_IE	0x0501
 
@@ -37,6 +38,9 @@
 #include <shellapi.h>
 
 #include <atlapp.h>
+
+#define _WTL_USE_VSSYM32
+#include <atltheme.h>
 
 extern CAppModule _Module;
 extern CRegKey	  _Settings;
@@ -68,10 +72,10 @@ extern CString			  _SettingsPath;
 #import "vbscript3.tlb"
 
 // mshtml additional includes
+#include <exdisp.h>
 #include <exdispid.h>
 #include <mshtmdid.h>
 #include <mshtmcid.h>
-#import <shdocvw.dll> rename_namespace("SHD")
 #import <mshtml.tlb>
 
 // use com utils
@@ -104,5 +108,23 @@ HRESULT	ScriptCall(const wchar_t *func,VARIANT *arg,VARIANT *ret);
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
+
+#if defined _M_IX86
+
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
+
+#elif defined _M_IA64
+
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='ia64' publicKeyToken='6595b64144ccf1df' language='*'\"")
+
+#elif defined _M_X64
+
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*'\"")
+
+#else
+
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
+
+#endif
 
 #endif // !defined(AFX_STDAFX_H__149F645E_518F_4EA9_B603_63D633FFB194__INCLUDED_)

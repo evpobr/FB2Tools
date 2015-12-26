@@ -46,6 +46,7 @@ LRESULT CFBEView::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
     return 1;
   if (!SUCCEEDED(QueryControl(&m_browser)))
     return 1;
+  m_browser->put_Silent(VARIANT_TRUE);  
 
   // register browser events handler
   BrowserEvents::DispEventAdvise(m_browser,&DIID_DWebBrowserEvents2);
@@ -109,7 +110,7 @@ LRESULT CFBEView::OnStyleLink(WORD, WORD, HWND, BOOL&) {
 
 LRESULT CFBEView::OnStyleFootnote(WORD, WORD, HWND, BOOL&) {
   try {
-    m_mk_srv->BeginUndoUnit(L"Create Footnote");
+    m_mk_srv->BeginUndoUnit((USHORT*)L"Create Footnote");
     if (Document()->execCommand(L"CreateLink",VARIANT_FALSE,_variant_t(L""))==VARIANT_TRUE) {
       MSHTML::IHTMLTxtRangePtr  r(Document()->selection->createRange());
       MSHTML::IHTMLElementPtr	pe(r->parentElement());
@@ -241,7 +242,7 @@ bool  CFBEView::SplitContainer(bool fCheck) {
     // * create an undo unit
     CString   name(L"split ");
     name+=(const wchar_t *)pe->className;
-    m_mk_srv->BeginUndoUnit((TCHAR*)(const TCHAR *)name);
+    m_mk_srv->BeginUndoUnit((USHORT*)(const TCHAR *)name);
 
     // * create a new element
     MSHTML::IHTMLElementPtr   ne(Document()->createElement(L"DIV"));
@@ -340,7 +341,7 @@ bool  CFBEView::InsertPoemOrCite(bool fCite,bool fCheck) {
     // at this point we are ready to create a poem
 
     // * create an undo unit
-    m_mk_srv->BeginUndoUnit(fCite ? L"insert cite" : L"insert poem");
+    m_mk_srv->BeginUndoUnit(fCite ? (USHORT*)L"insert cite" : (USHORT*)L"insert poem");
 
     MSHTML::IHTMLElementPtr	  ne(Document()->createElement(L"DIV"));
     if (!fCite) {
@@ -847,7 +848,7 @@ static void FixupLinks(MSHTML::IHTMLDOMNode *dom) {
 void  CFBEView::Normalize(MSHTML::IHTMLDOMNodePtr dom) {
   try {
     // wrap in an undo unit
-    m_mk_srv->BeginUndoUnit(L"Normalize");
+    m_mk_srv->BeginUndoUnit((USHORT*)L"Normalize");
 
     // remove unsupported elements
     RemoveUnk(dom,Document());
@@ -881,7 +882,7 @@ static void FixupParagraphs(MSHTML::IHTMLElement2Ptr elem) {
 
 LRESULT CFBEView::OnPaste(WORD, WORD, HWND, BOOL&) {
   try {
-    m_mk_srv->BeginUndoUnit(L"Paste");
+    m_mk_srv->BeginUndoUnit((USHORT*)L"Paste");
     ++m_enable_paste;
     IOleCommandTargetPtr(m_browser)->Exec(&CGID_MSHTML, IDM_PASTE, 0, NULL, NULL);
     --m_enable_paste;
@@ -1254,7 +1255,7 @@ int  CFBEView::GlobalReplace() {
     re->Global=VARIANT_TRUE;
     re->Pattern=(const wchar_t *)m_fo.pattern;
 
-    m_mk_srv->BeginUndoUnit(L"replace");
+    m_mk_srv->BeginUndoUnit((USHORT*)L"replace");
 
     sel->collapse(VARIANT_TRUE);
 
@@ -1433,7 +1434,9 @@ void  CFBEView::OnDocumentComplete(IDispatch *pDisp,VARIANT *vtUrl) {
 
 void  CFBEView::Init() {
   // save document pointer
-  m_hdoc=m_browser->Document;
+	CComPtr<IDispatch> disp;
+	m_browser->get_Document(&disp);
+	disp.QueryInterface(&m_hdoc);
 
   m_mk_srv=m_hdoc;
   m_mkc=m_hdoc;
@@ -1486,7 +1489,7 @@ void  CFBEView::Init() {
   }
 
   // turn off browser's d&d
-  m_browser->RegisterAsDropTarget=VARIANT_FALSE;
+  m_browser->put_RegisterAsDropTarget(VARIANT_FALSE);
 
   m_initialized=true;
 }

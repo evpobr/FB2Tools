@@ -52,7 +52,7 @@ protected:
 
   HWND			    m_frame;
 
-  SHD::IWebBrowser2Ptr	    m_browser;
+  IWebBrowser2Ptr	    m_browser;
   MSHTML::IHTMLDocument2Ptr m_hdoc;
   MSHTML::IMarkupServices2Ptr  m_mk_srv;
   MSHTML::IMarkupContainer2Ptr m_mkc;
@@ -110,7 +110,7 @@ protected:
 
 public:
 
-  SHD::IWebBrowser2Ptr	    Browser() { return m_browser; }
+  IWebBrowser2Ptr	    Browser() { return m_browser; }
   MSHTML::IHTMLDocument2Ptr Document() { return m_hdoc; }
   bool			    HasDoc() { return m_hdoc; }
   IDispatchPtr		    Script(){ return MSHTML::IHTMLDocumentPtr(m_hdoc)->Script; }
@@ -121,7 +121,7 @@ public:
 
   long			    GetVersionNumber() { return m_mkc ? m_mkc->GetVersionNumber() : -1; }
 
-  void			    BeginUndoUnit(const wchar_t *name) { m_mk_srv->BeginUndoUnit((wchar_t *)name); }
+  void			    BeginUndoUnit(const wchar_t *name) { m_mk_srv->BeginUndoUnit((USHORT*)name); }
   void			    EndUndoUnit() { m_mk_srv->EndUndoUnit(); }
 
   DECLARE_WND_SUPERCLASS(NULL, CAxWindow::GetWndClassName())
