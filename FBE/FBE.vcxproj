@@ -64,7 +64,7 @@
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>wtl;extras;utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>extras;utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;UNICODE;STRICT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -108,7 +108,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>wtl;extras;utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>extras;utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;UNICODE;STRICT;_ATL_TRACE_LEVEL=4;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -247,22 +247,6 @@
     <ClInclude Include="TreeView.h" />
     <ClInclude Include="utils\utils.h" />
     <ClInclude Include="Words.h" />
-    <ClInclude Include="wtl\atlapp.h" />
-    <ClInclude Include="wtl\atlcrack.h" />
-    <ClInclude Include="wtl\atlctrls.h" />
-    <ClInclude Include="wtl\atlctrlw.h" />
-    <ClInclude Include="wtl\atlctrlx.h" />
-    <ClInclude Include="wtl\atlddx.h" />
-    <ClInclude Include="wtl\atldlgs.h" />
-    <ClInclude Include="wtl\atlframe.h" />
-    <ClInclude Include="wtl\atlgdi.h" />
-    <ClInclude Include="wtl\atlmisc.h" />
-    <ClInclude Include="wtl\atlprint.h" />
-    <ClInclude Include="wtl\atlres.h" />
-    <ClInclude Include="wtl\atlscrl.h" />
-    <ClInclude Include="wtl\atlsplit.h" />
-    <ClInclude Include="wtl\atltheme.h" />
-    <ClInclude Include="wtl\atluser.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ExtraIcons.bmp" />
@@ -285,6 +269,7 @@
   <ItemGroup>
     <None Include="body.js" />
     <None Include="desc.js" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="body.xsl" />
@@ -292,5 +277,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\FBV\packages\wtl.9.1\build\native\wtl.targets" Condition="Exists('..\FBV\packages\wtl.9.1\build\native\wtl.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\FBV\packages\wtl.9.1\build\native\wtl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\FBV\packages\wtl.9.1\build\native\wtl.targets'))" />
+  </Target>
 </Project>

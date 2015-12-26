@@ -17,10 +17,6 @@
       <UniqueIdentifier>{55815597-0dce-4a09-87b5-8620f0ea7ce7}</UniqueIdentifier>
       <Extensions>cpp;h</Extensions>
     </Filter>
-    <Filter Include="wtl">
-      <UniqueIdentifier>{6fe4356a-8a26-4ccc-a5a4-242402d93ff1}</UniqueIdentifier>
-      <Extensions>cpp;h</Extensions>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{898a484f-751f-497e-adef-0a8e57c4f2bf}</UniqueIdentifier>
     </Filter>
@@ -120,54 +116,6 @@
     <ClInclude Include="extras\ColorButton.h">
       <Filter>extras</Filter>
     </ClInclude>
-    <ClInclude Include="wtl\atlapp.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlcrack.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlctrls.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlctrlw.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlctrlx.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlddx.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atldlgs.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlframe.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlgdi.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlmisc.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlprint.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlres.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlscrl.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atlsplit.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atltheme.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
-    <ClInclude Include="wtl\atluser.h">
-      <Filter>wtl</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ExtraIcons.bmp">
@@ -203,6 +151,7 @@
     <None Include="desc.js">
       <Filter>Resources</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="body.xsl">
