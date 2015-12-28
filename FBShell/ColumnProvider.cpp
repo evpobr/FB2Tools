@@ -1,10 +1,9 @@
-#include "stdafx.h"
-#include "resource.h"
-
+#include "StdAfx.h"
+#include "ColumnProvider.h"
 #include "FBShell.h"
 
-#define	F(cat,name)	&ColumnProvider::FBInfo::get_##cat##_##name
-ColumnProvider::ColumnInfo    ColumnProvider::g_columns[]={
+#define	F(cat,name)	&CColumnProvider::FBInfo::get_##cat##_##name
+CColumnProvider::ColumnInfo    CColumnProvider::g_columns[]={
   { L"Genre",		12,   SHCOLSTATE_TYPE_STR,  &FMTID_MUSIC,		PIDSI_GENRE,  F(title,genres)   },
   { L"Author",		32,   SHCOLSTATE_TYPE_STR,  &FMTID_SummaryInformation,  PIDSI_AUTHOR, F(title,authors)  },
   { L"Title",		32,   SHCOLSTATE_TYPE_STR,  &FMTID_SummaryInformation,  PIDSI_TITLE,  F(title,title)    },
@@ -22,7 +21,7 @@ ColumnProvider::ColumnInfo    ColumnProvider::g_columns[]={
 #undef F
 #define	NCOLUMNS  (sizeof(g_columns)/sizeof(g_columns[0]))
 
-HRESULT	  ColumnProvider::FBInfo::GetVariant(const CString& str,VARIANT *vt) {
+HRESULT	  CColumnProvider::FBInfo::GetVariant(const CString& str,VARIANT *vt) {
   if (V_BSTR(vt)=str.AllocSysString()) {
     V_VT(vt)=VT_BSTR;
     return S_OK;
@@ -30,7 +29,7 @@ HRESULT	  ColumnProvider::FBInfo::GetVariant(const CString& str,VARIANT *vt) {
   return E_OUTOFMEMORY;
 }
 
-HRESULT ColumnProvider::GetColumnInfo(DWORD dwIndex,SHCOLUMNINFO *psci)
+HRESULT CColumnProvider::GetColumnInfo(DWORD dwIndex,SHCOLUMNINFO *psci)
 {
   if (dwIndex>=NCOLUMNS)
     return S_FALSE;
@@ -51,7 +50,7 @@ HRESULT ColumnProvider::GetColumnInfo(DWORD dwIndex,SHCOLUMNINFO *psci)
   return S_OK;
 }
 
-HRESULT ColumnProvider::GetItemData(LPCSHCOLUMNID pscid, LPCSHCOLUMNDATA pscd, VARIANT* pvarData)
+HRESULT CColumnProvider::GetItemData(LPCSHCOLUMNID pscid, LPCSHCOLUMNDATA pscd, VARIANT* pvarData)
 {
   // don't even boter with others' files
   if (pscd->dwFileAttributes & (FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_OFFLINE) ||
@@ -77,7 +76,7 @@ HRESULT ColumnProvider::GetItemData(LPCSHCOLUMNID pscid, LPCSHCOLUMNDATA pscd, V
   return S_FALSE;
 }
 
-class ColumnProvider::ContentHandlerImpl :
+class CColumnProvider::ContentHandlerImpl :
   public CComObjectRoot,
   public MSXML2::ISAXContentHandler
 {
@@ -102,7 +101,7 @@ public:
     m_ok(false), m_root(true), m_prefix(0),
     m_forceprefix(false) { m_mstack.Add(ROOT); }
 
-  void	SetInfo(ColumnProvider::FBInfo *fbi) { m_info=fbi; m_dest=0; }
+  void	SetInfo(CColumnProvider::FBInfo *fbi) { m_info=fbi; m_dest=0; }
   bool	Ok() { return m_ok; }
 
   DECLARE_NO_REGISTRY()
@@ -127,7 +126,7 @@ public:
   STDMETHOD(raw_putDocumentLocator)(MSXML2::ISAXLocator *loc) { return S_OK; }
 
 protected:
-  ColumnProvider::FBInfo	*m_info;
+  CColumnProvider::FBInfo	*m_info;
   CString			*m_dest;
   CSimpleValArray<ParseMode>	m_mstack;
   bool				m_ok;
@@ -152,7 +151,7 @@ protected:
   }
 };
 
-HRESULT	ColumnProvider::FBInfo::Init(const wchar_t *fn) {
+HRESULT	CColumnProvider::FBInfo::Init(const wchar_t *fn) {
   if (filename==fn)
     return S_OK;
 
@@ -182,7 +181,7 @@ HRESULT	ColumnProvider::FBInfo::Init(const wchar_t *fn) {
   return S_OK;
 }
 
-void  ColumnProvider::FBInfo::Clear() {
+void  CColumnProvider::FBInfo::Clear() {
   title.authors.Empty();
   title.date.Empty();
   title.dateval.Empty();
@@ -202,7 +201,7 @@ void  ColumnProvider::FBInfo::Clear() {
   filename.Empty();
 }
 
-HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int urilen,
+HRESULT	CColumnProvider::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int urilen,
 	USHORT *name,int namelen,
 	USHORT *qname,int qnamelen,
 	MSXML2::ISAXAttributes *attr)
@@ -305,7 +304,7 @@ HRESULT	ColumnProvider::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int u
   return S_OK;
 }
 
-HRESULT ColumnProvider::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
+HRESULT CColumnProvider::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
 	USHORT *name,int namelen,
 	USHORT *qname,int qnamelen)
 {
@@ -373,7 +372,7 @@ HRESULT ColumnProvider::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nsl
   return S_OK;
 }
 
-HRESULT ColumnProvider::ContentHandlerImpl::raw_characters(USHORT *chars,int nch)
+HRESULT CColumnProvider::ContentHandlerImpl::raw_characters(USHORT *chars,int nch)
 {
   if (m_dest) {
     FlushPrefix();

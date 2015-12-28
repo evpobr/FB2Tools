@@ -15,22 +15,19 @@
 #error This program requires unicode support to run
 #endif
 
-#define WINVER       0x0500     // W2K/98
-#define _WIN32_WINNT 0x0500     // W2K
+#define WINVER       0x0501     // W2K/98
+#define _WIN32_WINNT 0x0501     // W2K
 #define _WIN32_IE    0x0500     // IE 5+
 
 // we are MT by default
-#define _ATL_MULTI_THREADED
+#define _ATL_APARTMENT_THREADED
 
 // Insert your headers here
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 
 #include <atlbase.h>
-
-extern CComModule _Module;
-
+#include <atlstr.h>
 #include <atlapp.h>
-#include <atlmisc.h>
 
 #include <atlcom.h>
 
@@ -49,3 +46,4 @@ using namespace _com_util;
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_STDAFX_H__AA787312_D02C_4332_A4DD_1B1AA8B9E8BF__INCLUDED_)
+

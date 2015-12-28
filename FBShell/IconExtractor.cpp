@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "resource.h"
+#include "IconExtractor.h"
 
 #include "FBShell.h"
 #include "Image.h"
@@ -23,7 +23,7 @@ public:
 };
 
 // IExtractImage
-HRESULT IconExtractor::GetLocation(wchar_t *file,DWORD filelen,DWORD *prio,
+HRESULT CIconExtractor::GetLocation(wchar_t *file,DWORD filelen,DWORD *prio,
 				   const SIZE *sz,
 				   DWORD depth,DWORD *flags)
 {
@@ -43,7 +43,7 @@ HRESULT IconExtractor::GetLocation(wchar_t *file,DWORD filelen,DWORD *prio,
   return S_OK;
 }
 
-HRESULT IconExtractor::Extract(HBITMAP *hBmp) {
+HRESULT CIconExtractor::Extract(HBITMAP *hBmp) {
   // load image if available
   CString     type;
   int	      datalen;
@@ -65,7 +65,7 @@ HRESULT IconExtractor::Extract(HBITMAP *hBmp) {
 }
 
 // IExtractImage2
-HRESULT	IconExtractor::GetDateStamp(FILETIME *tm) {
+HRESULT	CIconExtractor::GetDateStamp(FILETIME *tm) {
   HANDLE  hFile=::CreateFile(m_filename,FILE_READ_ATTRIBUTES,0,NULL,OPEN_EXISTING,0,NULL);
   if (hFile==INVALID_HANDLE_VALUE)
     return HRESULT_FROM_WIN32(::GetLastError());
@@ -76,7 +76,7 @@ HRESULT	IconExtractor::GetDateStamp(FILETIME *tm) {
 
 ///////////////////////////////////////////////////////////
 // SAX xml content handler (I use SAX instead of DOM for speed)
-class IconExtractor::ContentHandlerImpl :
+class CIconExtractor::ContentHandlerImpl :
   public CComObjectRoot,
   public MSXML2::ISAXContentHandler
 {
@@ -151,7 +151,7 @@ private:
   }
 };
 
-bool    IconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&data,int& datalen)
+bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&data,int& datalen)
 {
   ContentHandlerPtr	      ch;
   if (FAILED(CreateObject(ch)))
@@ -174,7 +174,7 @@ bool    IconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&d
   return true;
 }
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
+HRESULT	CIconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
 	USHORT *name,int namelen,
 	USHORT *qname,int qnamelen)
 {
@@ -205,7 +205,7 @@ HRESULT	IconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nsle
   return S_OK;
 }
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int nslen,
+HRESULT	CIconExtractor::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int nslen,
 	USHORT *name,int namelen,
 	USHORT *qname,int qnamelen,
 	MSXML2::ISAXAttributes *attr)
@@ -269,7 +269,7 @@ static BYTE	g_base64_table[256]={
 65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65
 };
 
-HRESULT	IconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch) {
+HRESULT	CIconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch) {
   if (m_mode!=DATA)
     return S_OK;
 

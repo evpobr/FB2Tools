@@ -67,6 +67,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 IDR_COLUMNPROVIDER      REGISTRY DISCARDABLE    "ColumnProvider.rgs"
 IDR_ICONEXTRACTOR       REGISTRY DISCARDABLE    "IconExtractor.rgs"
 IDR_CONTEXTMENU         REGISTRY DISCARDABLE    "ContextMenu.rgs"
+IDR_FBSHELL				REGISTRY DISCARDABLE    "FBShell.rgs"
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -45,6 +45,9 @@
       <UniqueIdentifier>{49798ed1-0cc6-4288-9daf-fdec01d5d2fb}</UniqueIdentifier>
       <Extensions>h</Extensions>
     </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{286922b1-2d05-4576-aa99-43dfaa85e235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColumnProvider.cpp">
@@ -188,6 +191,12 @@
     <ClCompile Include="3rdParty\HR Stable\libjpeg\jutils.c">
       <Filter>libjpeg sources</Filter>
     </ClCompile>
+    <ClCompile Include="FBShell_i.c">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FBShell.h">
@@ -265,6 +274,21 @@
     <ClInclude Include="3rdParty\HR Stable\libjpeg\jversion.h">
       <Filter>libjpeg headers</Filter>
     </ClInclude>
+    <ClInclude Include="FBShell_h.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColumnProvider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IconExtractor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\HR Stable\res\FB.ico">
@@ -295,5 +319,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="FBShell.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\registry.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="FBShell.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
   </ItemGroup>
 </Project>
