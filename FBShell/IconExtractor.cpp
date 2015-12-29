@@ -2,7 +2,11 @@
 #include "IconExtractor.h"
 
 #include "FBShell.h"
+#ifdef FBSHELL_USE_EXTERNAL_LIBS
 #include "Image.h"
+#endif
+
+#ifdef FBSHELL_USE_EXTERNAL_LIBS
 
 // a MemReader helper class
 class MemReader : public ImageLoader::BinReader {
@@ -21,6 +25,8 @@ public:
   }
   void	Init(void *mem,int len) { m_data=(const BYTE *)mem; m_len=len; }
 };
+
+#endif
 
 // IExtractImage
 HRESULT CIconExtractor::GetLocation(wchar_t *file,DWORD filelen,DWORD *prio,
@@ -51,6 +57,128 @@ HRESULT CIconExtractor::Extract(HBITMAP *hBmp) {
   if (!LoadObject(m_filename,type,data,datalen))
     return E_FAIL;
 
+#ifdef FBSHELL_USE_GDIPLUS
+  CComPtr<IStream> spImageStream;
+  HRESULT hr = CreateStreamOnHGlobal(NULL, TRUE, &spImageStream);
+  if (SUCCEEDED(hr))
+  {
+	  ULONG cbRead;
+	  hr = spImageStream->Write(data, datalen, &cbRead);
+	  if (SUCCEEDED(hr))
+	  {
+		  Gdiplus::Bitmap image(spImageStream);
+		  if (image.GetLastStatus() == Gdiplus::Ok)
+		  {
+			  float imageWidth = (float)image.GetWidth();
+			  float imageHeight = (float)image.GetHeight();
+			  float scale = 0.0f;
+
+			  if (imageWidth <= imageHeight)
+				  scale = (float)m_desired_size.cy / (float)image.GetHeight();
+			  else
+				  scale = (float)m_desired_size.cx / (float)image.GetWidth();
+
+			  float thumbWidth = (float)imageWidth * scale;
+			  float thumbHeight = (float)imageHeight * scale;
+
+			  Gdiplus::Bitmap thumb((int)thumbWidth, (int)thumbHeight);
+			  if (thumb.GetLastStatus() == Gdiplus::Ok)
+			  {
+				  Gdiplus::Graphics graphics(&thumb);
+				  if (graphics.GetLastStatus() == Gdiplus::Ok)
+				  {
+					  Gdiplus::Status status = graphics.DrawImage(&image, 0, 0, (int)thumbWidth, (int)thumbHeight);
+
+					  if (status == Gdiplus::Ok)
+					  {
+						  HBITMAP *hbmReturn = NULL;
+						  status = thumb.GetHBITMAP(Gdiplus::Color::Transparent, hbmReturn);
+						  if (status == Gdiplus::Ok)
+						  {
+							  hBmp = hbmReturn;
+							  hr = S_OK;
+						  }
+						  else
+							  hr = E_FAIL;
+					  }
+					  else
+						  hr = E_FAIL;
+				  }
+				  else
+					  hr = E_FAIL;
+			  }
+			  else
+				  hr = E_FAIL;
+		  }
+		  else
+			  hr = E_FAIL;
+	  }
+  }
+
+  try
+  {
+	  if (FAILED(hr))
+		  throw _com_error(hr);
+  }
+  catch (_com_error &ex)
+  {
+	  MessageBox(NULL, ex.ErrorMessage(), NULL, MB_ICONERROR);
+  }
+
+  return hr;
+
+#elif FBSHELL_USE_ATL_CIMAGE
+
+  CComPtr<IStream> spImageStream;
+  HRESULT hr = CreateStreamOnHGlobal(NULL, TRUE, &spImageStream);
+  if (SUCCEEDED(hr))
+  {
+	  ULONG cbRead;
+	  hr = spImageStream->Write(data, datalen, &cbRead);
+	  free(data);
+	  if (SUCCEEDED(hr))
+	  {
+		  CImage image;
+		  image.Load(spImageStream);
+
+		  float imageWidth = (float)image.GetWidth();
+		  float imageHeight = (float)image.GetHeight();
+		  float scale = 0.0f;
+
+		  if (imageWidth <= imageHeight)
+			  scale = (float)m_desired_size.cy / (float)image.GetHeight();
+		  else
+			  scale = (float)m_desired_size.cx / (float)image.GetWidth();
+
+		  float thumbWidth = (float)imageWidth * scale;
+		  float thumbHeight = (float)imageHeight * scale;
+
+		  HDC hmemDC = CreateCompatibleDC(NULL);
+
+		  SetStretchBltMode(hmemDC, SRCCOPY);
+
+		  SetBrushOrgEx(hmemDC, 0, 0, NULL);
+
+		  HBITMAP hmemBM = CreateCompatibleBitmap(hmemDC, (int)thumbWidth, (int)thumbHeight);
+
+		  SelectObject(hmemDC, hmemBM);
+
+		  image.StretchBlt(hmemDC, 0, 0, (int)thumbWidth, (int)thumbHeight, SRCCOPY);
+
+		  *hBmp = image.Detach();
+
+		  ReleaseDC(NULL, hmemDC);
+
+		  DeleteObject(hmemBM);
+
+		  hr = S_OK;
+	  }
+  }
+
+  return hr;
+
+#else
+
   // create an image from our data
   MemReader rdr(data,datalen);
   HDC	hDC=::GetDC(NULL);
@@ -62,6 +190,8 @@ HRESULT CIconExtractor::Extract(HBITMAP *hBmp) {
   free(data);
 
   return ok ? S_OK : E_FAIL;
+
+#endif
 }
 
 // IExtractImage2
