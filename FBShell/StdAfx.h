@@ -27,7 +27,6 @@
 
 #include <atlbase.h>
 #include <atlstr.h>
-#include <atlapp.h>
 
 #include <atlcom.h>
 

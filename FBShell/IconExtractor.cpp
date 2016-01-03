@@ -26,8 +26,8 @@ HRESULT CIconExtractor::GetLocation(wchar_t *file,DWORD filelen,DWORD *prio,
 
 HRESULT CIconExtractor::Extract(HBITMAP *hBmp) {
   // load image if available
-  CString     type;
-  int	      datalen;
+  CString     type = _T("");
+  int	      datalen = 0;
   void	      *data=NULL;
   if (!LoadObject(m_filename,type,data,datalen))
     return E_FAIL;
@@ -36,7 +36,7 @@ HRESULT CIconExtractor::Extract(HBITMAP *hBmp) {
   HRESULT hr = CreateStreamOnHGlobal(NULL, TRUE, &spImageStream);
   if (SUCCEEDED(hr))
   {
-	  ULONG cbRead;
+	  ULONG cbRead = 0;
 	  hr = spImageStream->Write(data, datalen, &cbRead);
 	  free(data);
 	  if (SUCCEEDED(hr))
@@ -97,7 +97,11 @@ public:
   };
 
   // construction
-  ContentHandlerImpl() : m_mode(NONE), m_ok(false) { }
+  ContentHandlerImpl()
+	  : m_mode(NONE), m_ok(false), m_cover_id(_T("")), m_cover_type(_T("")), m_strBase64Image(_T("")), m_nDestLen(0), m_bDest(NULL)
+  {
+  }
+
   ~ContentHandlerImpl() {
   }
 
@@ -124,7 +128,10 @@ public:
 
   // data access
   void	  *Detach() {
-	  return m_bDest.Detach();
+	  if (m_bDest)
+		  return m_bDest.Detach();
+	  else
+		  return NULL;
   }
   int	  Length() { return m_nDestLen; }
   CString Type() { return m_cover_type; }
@@ -144,11 +151,11 @@ private:
 
 bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&data,int& datalen)
 {
-  ContentHandlerPtr	      ch;
+  ContentHandlerPtr	      ch = NULL;
   if (FAILED(CreateObject(ch)))
     return IStreamPtr();
 
-  MSXML2::ISAXXMLReaderPtr    rdr;
+  MSXML2::ISAXXMLReaderPtr    rdr = NULL;
   if (FAILED(rdr.CreateInstance(L"MSXML2.SAXXMLReader.4.0")))
     return IStreamPtr();
 
@@ -274,6 +281,7 @@ HRESULT	CIconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch
 
   // process base64 data and append to m_data
 
+  if ((chars != NULL) && (nch > 0))
   m_strBase64Image.Append((LPCWSTR)chars, nch);
 
 

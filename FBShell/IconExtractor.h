@@ -38,6 +38,7 @@ public:
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
 
 	HRESULT FinalConstruct() {
+		m_filename.Empty();
 		m_desired_size.cx = m_desired_size.cy = 32;
 		m_desired_depth = 24;
 
@@ -66,12 +67,8 @@ public:
 	STDMETHOD(GetDateStamp)(FILETIME *tm);
 
 protected:
-	// GDI+
-	ULONG_PTR m_gdiplusToken;
-	Gdiplus::GdiplusStartupInput m_gdiplusInput;
-
 	CString		      m_filename;
-	SIZE			      m_desired_size;
+	SIZE			  m_desired_size;
 	int			      m_desired_depth;
 
 	class ContentHandlerImpl;

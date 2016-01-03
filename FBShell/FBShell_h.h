@@ -3,11 +3,11 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 7.00.0555 */
-/* at Sun Jan 03 12:52:51 2016
+ /* File created by MIDL compiler version 8.00.0603 */
+/* at Mon Jan 04 00:03:39 2016
  */
 /* Compiler settings for FBShell.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -95,9 +95,9 @@ extern "C"{
 /* [version][uuid] */ 
 
 
-DEFINE_GUID(LIBID_FBShellLib,0x52DFA274,0xE911,0x470E,0xA2,0xAA,0xF2,0xB7,0x79,0x5F,0x56,0xE6);
+EXTERN_C const IID LIBID_FBShellLib;
 
-DEFINE_GUID(CLSID_IconExtractor,0xE4D8441D,0xF89C,0x4b5c,0x90,0xAC,0xA8,0x57,0xE1,0x76,0x8F,0x1F);
+EXTERN_C const CLSID CLSID_IconExtractor;
 
 #ifdef __cplusplus
 
@@ -105,7 +105,7 @@ class DECLSPEC_UUID("E4D8441D-F89C-4b5c-90AC-A857E1768F1F")
 IconExtractor;
 #endif
 
-DEFINE_GUID(CLSID_ContextMenu,0xFDABCF3B,0x57BE,0x4110,0x94,0xB5,0x4E,0xF8,0xEE,0x3C,0x6A,0x62);
+EXTERN_C const CLSID CLSID_ContextMenu;
 
 #ifdef __cplusplus
 
@@ -113,7 +113,7 @@ class DECLSPEC_UUID("FDABCF3B-57BE-4110-94B5-4EF8EE3C6A62")
 ContextMenu;
 #endif
 
-DEFINE_GUID(CLSID_ColumnProvider,0x8CBB373E,0x693A,0x4bea,0xAD,0xF3,0xD0,0x5E,0xAE,0x41,0x68,0x4B);
+EXTERN_C const CLSID CLSID_ColumnProvider;
 
 #ifdef __cplusplus
 
