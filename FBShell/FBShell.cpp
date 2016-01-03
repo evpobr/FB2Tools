@@ -117,14 +117,14 @@ void  NormalizeInplace(CString& s) {
   s.ReleaseBuffer(q-r);
 }
 
-CString	GetAttr(MSXML2::ISAXAttributes *attr,const wchar_t *name,const wchar_t *ns) {
+CString	GetAttr(ISAXAttributes *attr,const wchar_t *name,const wchar_t *ns) {
   int nslen=ns ? lstrlenW(ns) : 0;
   int nlen=lstrlenW(name);
 
   int vlen;
-  wchar_t *val;
+  const wchar_t *val;
 
-  if (FAILED(attr->raw_getValueFromName((USHORT*)ns,nslen,(USHORT*)name,nlen, (USHORT**)&val,&vlen)))
+  if (FAILED(attr->getValueFromName(ns,nslen,name,nlen, &val,&vlen)))
     return CString();
 
   CString ret(val,vlen);

@@ -12,7 +12,7 @@ extern const wchar_t 	*FBNS;
 extern const wchar_t 	*XLINKNS;
 bool	StrEQ(const wchar_t *zstr,const wchar_t *wstr,int wlen);
 void	NormalizeInplace(CString& s);
-CString	GetAttr(MSXML2::ISAXAttributes *attr,const wchar_t *name,const wchar_t *ns=NULL);
+CString	GetAttr(ISAXAttributes *attr,const wchar_t *name,const wchar_t *ns=NULL);
 template<class T>
 extern inline HRESULT CreateObject(CComPtr<T>& ptr) {
   T	  *obj;

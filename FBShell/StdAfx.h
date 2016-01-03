@@ -32,8 +32,11 @@
 
 #include <comutil.h>
 #include <comdef.h>
+#include <comdefsp.h>
 
-#import <msxml4.dll>
+#include <msxml6.h>
+
+_COM_SMARTPTR_TYPEDEF(ISAXXMLReader, __uuidof(ISAXXMLReader));
 
 #include <shellapi.h>
 #include <shlobj.h>

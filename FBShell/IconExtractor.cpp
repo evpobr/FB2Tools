@@ -87,7 +87,7 @@ HRESULT	CIconExtractor::GetDateStamp(FILETIME *tm) {
 // SAX xml content handler (I use SAX instead of DOM for speed)
 class CIconExtractor::ContentHandlerImpl :
   public CComObjectRoot,
-  public MSXML2::ISAXContentHandler
+  public ISAXContentHandler
 {
 public:
   enum ParseMode {
@@ -108,23 +108,23 @@ public:
   DECLARE_NO_REGISTRY()
 
   BEGIN_COM_MAP(ContentHandlerImpl)
-    COM_INTERFACE_ENTRY(MSXML2::ISAXContentHandler)
+    COM_INTERFACE_ENTRY(ISAXContentHandler)
   END_COM_MAP()
 
   // ISAXContentHandler
-  STDMETHOD(raw_characters)(USHORT *chars,int nch);
-  STDMETHOD(raw_endDocument)() { return S_OK; }
-  STDMETHOD(raw_startDocument)() { return S_OK; }
-  STDMETHOD(raw_endElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
-	  USHORT *qname,int qnamelen);
-  STDMETHOD(raw_startElement)(USHORT *nsuri,int nslen, USHORT *name,int namelen,
-	  USHORT *qname,int qnamelen,MSXML2::ISAXAttributes *attr);
-  STDMETHOD(raw_ignorableWhitespace)(USHORT *spc,int spclen) { return S_OK; }
-  STDMETHOD(raw_endPrefixMapping)(USHORT *prefix,int len) { return S_OK; }
-  STDMETHOD(raw_startPrefixMapping)(USHORT *prefix,int plen, USHORT *uri,int urilen) { return S_OK; }
-  STDMETHOD(raw_processingInstruction)(USHORT *targ,int targlen, USHORT *data,int datalen) { return S_OK; }
-  STDMETHOD(raw_skippedEntity)(USHORT *name,int namelen) { return S_OK; }
-  STDMETHOD(raw_putDocumentLocator)(MSXML2::ISAXLocator *loc) { return S_OK; }
+  STDMETHOD(characters)(const wchar_t *chars,int nch);
+  STDMETHOD(endDocument)() { return S_OK; }
+  STDMETHOD(startDocument)() { return S_OK; }
+  STDMETHOD(endElement)(const wchar_t *nsuri,int nslen, const wchar_t *name,int namelen,
+	  const wchar_t *qname,int qnamelen);
+  STDMETHOD(startElement)(const wchar_t *nsuri,int nslen, const wchar_t *name,int namelen,
+	  const wchar_t *qname,int qnamelen,ISAXAttributes *attr);
+  STDMETHOD(ignorableWhitespace)(const wchar_t *spc,int spclen) { return S_OK; }
+  STDMETHOD(endPrefixMapping)(const wchar_t *prefix,int len) { return S_OK; }
+  STDMETHOD(startPrefixMapping)(const wchar_t *prefix,int plen, const wchar_t *uri,int urilen) { return S_OK; }
+  STDMETHOD(processingInstruction)(const wchar_t *targ,int targlen, const wchar_t *data,int datalen) { return S_OK; }
+  STDMETHOD(skippedEntity)(const wchar_t *name,int namelen) { return S_OK; }
+  STDMETHOD(putDocumentLocator)(ISAXLocator *loc) { return S_OK; }
 
   // data access
   void	  *Detach() {
@@ -155,13 +155,13 @@ bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&
   if (FAILED(CreateObject(ch)))
     return IStreamPtr();
 
-  MSXML2::ISAXXMLReaderPtr    rdr = NULL;
-  if (FAILED(rdr.CreateInstance(L"MSXML2.SAXXMLReader.4.0")))
+  ISAXXMLReaderPtr    rdr = NULL;
+  if (FAILED(rdr.CreateInstance(L"MSXML2.SAXXMLReader.6.0")))
     return IStreamPtr();
 
   rdr->putContentHandler(ch);
 
-  rdr->raw_parseURL((USHORT *)filename);
+  rdr->parseURL(filename);
 
   type=ch->Type();
   datalen=ch->Length();
@@ -170,9 +170,9 @@ bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&
   return true;
 }
 
-HRESULT	CIconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nslen,
-	USHORT *name,int namelen,
-	USHORT *qname,int qnamelen)
+HRESULT	CIconExtractor::ContentHandlerImpl::endElement(const wchar_t *nsuri,int nslen,
+	const wchar_t *name,int namelen,
+	const wchar_t *qname,int qnamelen)
 {
   // all elements must be in a fictionbook namespace
   if (!StrEQ(FBNS,(wchar_t*)nsuri,nslen))
@@ -219,10 +219,10 @@ HRESULT	CIconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nsl
   return S_OK;
 }
 
-HRESULT	CIconExtractor::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int nslen,
-	USHORT *name,int namelen,
-	USHORT *qname,int qnamelen,
-	MSXML2::ISAXAttributes *attr)
+HRESULT	CIconExtractor::ContentHandlerImpl::startElement(const wchar_t *nsuri,int nslen,
+	const wchar_t *name,int namelen,
+	const wchar_t *qname,int qnamelen,
+	ISAXAttributes *attr)
 {
   // all elements must be in a fictionbook namespace
   if (!StrEQ(FBNS, (wchar_t*)nsuri,nslen))
@@ -275,7 +275,7 @@ static BYTE	g_base64_table[256]={
 65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65
 };
 
-HRESULT	CIconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch) {
+HRESULT	CIconExtractor::ContentHandlerImpl::characters(const wchar_t *chars,int nch) {
   if (m_mode!=DATA)
     return S_OK;
 
