@@ -40,13 +40,7 @@
 #include <shlobj.h>
 #include <shlguid.h>
 
-#ifdef FBSHELL_USE_GDIPLUS
-#include <GdiPlus.h>
-#endif
-
-#ifdef FBSHELL_USE_ATL_CIMAGE
 #include <atlimage.h>
-#endif
 
 using namespace _com_util;
 

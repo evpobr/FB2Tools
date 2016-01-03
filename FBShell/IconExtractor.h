@@ -40,17 +40,12 @@ public:
 	HRESULT FinalConstruct() {
 		m_desired_size.cx = m_desired_size.cy = 32;
 		m_desired_depth = 24;
-#ifdef FBSHELL_USE_GDIPLUS
-		Gdiplus::GdiplusStartup(&m_gdiplusToken, &m_gdiplusInput, NULL);
-#endif
+
 		return S_OK;
 	}
 
 	void FinalRelease()
 	{
-#ifdef FBSHELL_USE_GDIPLUS
-		Gdiplus::GdiplusShutdown(m_gdiplusToken);
-#endif
 	}
 
 	// IPersist
