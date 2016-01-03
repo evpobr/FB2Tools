@@ -97,9 +97,8 @@ public:
   };
 
   // construction
-  ContentHandlerImpl() : m_mode(NONE), m_data(NULL), m_ok(false) { }
+  ContentHandlerImpl() : m_mode(NONE), m_ok(false) { }
   ~ContentHandlerImpl() {
-    free(m_data);
   }
 
   DECLARE_NO_REGISTRY()
@@ -125,11 +124,9 @@ public:
 
   // data access
   void	  *Detach() {
-    void *tmp=m_data;
-    m_data=NULL;
-    return tmp;
+	  return m_bDest.Detach();
   }
-  int	  Length() { return m_data_ptr; }
+  int	  Length() { return m_nDestLen; }
   CString Type() { return m_cover_type; }
   bool	  Ok() { return m_ok; }
 
@@ -139,25 +136,10 @@ private:
 
   CString	  m_cover_id;
   CString	  m_cover_type;
-  DWORD		  m_data_length;
-  DWORD		  m_data_ptr;
-  BYTE		  *m_data;
+  CString	m_strBase64Image;
+  int		m_nDestLen;
+  CHeapPtr<BYTE> m_bDest;
 
-  // base64 decoder state
-  DWORD		  m_bits;
-  BYTE		  m_shift;
-
-  // extend the data array
-  bool		  Extend(BYTE *np) {
-    m_data_ptr=np-m_data;
-    DWORD   tmp=m_data_length<<1;
-    void    *mem=realloc(m_data,tmp);
-    if (!mem)
-      return false;
-    m_data_length=tmp;
-    m_data=(BYTE*)mem;
-    return true;
-  }
 };
 
 bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&data,int& datalen)
@@ -173,8 +155,6 @@ bool    CIconExtractor::LoadObject(const wchar_t *filename,CString& type,void *&
   rdr->putContentHandler(ch);
 
   rdr->raw_parseURL((USHORT *)filename);
-  if (!ch->Ok())
-    return false;
 
   type=ch->Type();
   datalen=ch->Length();
@@ -206,9 +186,27 @@ HRESULT	CIconExtractor::ContentHandlerImpl::raw_endElement(USHORT *nsuri,int nsl
   case DATA:
     // if we got here and have some bits left in our buffer then we have malformed
     // base64 data
-    if (m_shift==18)
-      m_ok=true;
-    return E_FAIL;
+	  DWORD cbBinary = 0;
+	  HRESULT hr = S_OK;
+	  if (!CryptStringToBinaryW(m_strBase64Image, m_strBase64Image.GetLength(), CRYPT_STRING_BASE64, NULL, &cbBinary, 0, NULL))
+		  hr = E_FAIL;
+
+	  if (SUCCEEDED(hr))
+	  {
+		  m_nDestLen = cbBinary;
+		  m_bDest.Allocate(m_nDestLen);
+		  if (!CryptStringToBinaryW(m_strBase64Image, m_strBase64Image.GetLength(), CRYPT_STRING_BASE64, m_bDest, &cbBinary, 0, NULL))
+			  hr = E_FAIL;
+
+		  m_nDestLen = cbBinary;
+
+		  if (FAILED(hr))
+			  m_bDest.Free();
+
+		  m_mode = NONE;
+	  }
+
+	  return hr;
   }
 
   return S_OK;
@@ -235,14 +233,6 @@ HRESULT	CIconExtractor::ContentHandlerImpl::raw_startElement(USHORT *nsuri,int n
 
       m_cover_type=GetAttr(attr,L"content-type");
 
-      // initialize memory block and a base64 decoder
-      m_data_length=32768; // arbitrary initial size
-      m_data_ptr=0;
-      m_data=(BYTE*)malloc(m_data_length);
-      if (m_data==NULL)
-	return E_FAIL;
-      m_shift=18;
-      m_bits=0;
       m_mode=DATA;
     }
     break;
@@ -284,70 +274,8 @@ HRESULT	CIconExtractor::ContentHandlerImpl::raw_characters(USHORT *chars,int nch
 
   // process base64 data and append to m_data
 
-  // copy globals to local variables
-  BYTE	  shift=m_shift;
-  DWORD	  acc=m_bits;
-  BYTE	  *data=m_data+m_data_ptr;
-  DWORD	  space=m_data_length-m_data_ptr;
+  m_strBase64Image.Append((LPCWSTR)chars, nch);
 
-  for (wchar_t *chars_end= (wchar_t*)chars+nch; (wchar_t*)chars<chars_end; (wchar_t*)++chars) {
-    BYTE     bits=g_base64_table[*chars & 0xff]; // not my problem if it wraps
-    switch (bits) {
-    case 64: // end of data
-      switch (shift) { // store remaining bytes
-      case 18:
-      case 12:
-	// malformed base64 data
-	return E_FAIL;
-      case 6: // one byte
-	if (space<2) {
-	  if (!Extend(data))
-	    return E_FAIL;
-	  data=m_data+m_data_ptr;
-	  space=m_data_length-m_data_ptr;
-	}
-	*data++ = (BYTE)(acc>>16);
-	break;
-      case 0: // two bytes
-	if (space<2) {
-	  if (!Extend(data))
-	    return E_FAIL;
-	  data=m_data+m_data_ptr;
-	  space=m_data_length-m_data_ptr;
-	}
-	*data++ = (BYTE)(acc>>16);
-	*data++ = (BYTE)(acc>>8);
-	break;
-      }
-      m_data_ptr=data-m_data;
-      m_ok=true;
-      return E_FAIL;
-    case 65: // whitespace, ignore;
-      break;
-    default: // valid bits, process
-      acc|=(DWORD)bits << shift;
-      if ((shift-=6)>18) { // wraparound, full triplet ready
-	if (space<3) {
-	  if (!Extend(data))
-	    return E_FAIL;
-	  data=m_data+m_data_ptr;
-	  space=m_data_length-m_data_ptr;
-	}
-	*data++ = (BYTE)(acc>>16);
-	*data++ = (BYTE)(acc>>8);
-	*data++ = (BYTE)(acc);
-	shift=18;
-	space-=3;
-	acc=0;
-      }
-      break;
-    }
-  }
-
-  // store back vars
-  m_data_ptr=data-m_data;
-  m_shift=shift;
-  m_bits=acc;
 
   return S_OK;
 }

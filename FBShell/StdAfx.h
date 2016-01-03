@@ -41,6 +41,7 @@
 #include <shlguid.h>
 
 #include <atlimage.h>
+#include <WinCrypt.h>
 
 using namespace _com_util;
 
