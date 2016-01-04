@@ -246,6 +246,11 @@
   <ItemGroup>
     <ResourceCompile Include="ExportHTML.rc" />
   </ItemGroup>
+  <ItemGroup>
+      <None Include="html.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="packages\wtl.9.1\build\native\wtl.targets" Condition="Exists('packages\wtl.9.1\build\native\wtl.targets')" />
