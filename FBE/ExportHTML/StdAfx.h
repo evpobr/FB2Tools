@@ -16,9 +16,12 @@
 #endif
 
 // Change these values to use different versions
-#define WINVER		0x0501
+#include <winsdkver.h>
+
+#define NTDDI_VERSION	0x05010300
 #define _WIN32_WINNT	0x0501
-#define _WIN32_IE	0x0501
+
+#include <sdkddkver.h>
 
 // Insert your headers here
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
