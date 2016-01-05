@@ -197,7 +197,7 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 FBE/FBE.h
-FBTools.VC.opendb
+*.VC.opendb
 !vbscript3.tlb
 FBE/FBE.h
 FBTools/FictionBook Tools v2.0 Setup.exe
