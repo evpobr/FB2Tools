@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Russian resources
+// Russian (Russia) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
-#ifdef _WIN32
 LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 #pragma code_page(1251)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -35,18 +33,16 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Russian resources
+#endif    // Russian (Russia) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -73,7 +69,7 @@ END
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR  16, 15
+IDR_MAINFRAME TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -105,7 +101,7 @@ BEGIN
     BUTTON      ID_EDIT_INS_IMAGE
 END
 
-IDR_EXTRAICONS TOOLBAR  16, 15
+IDR_EXTRAICONS TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_VIEW_OPTIONS
     BUTTON      ID_EDIT_REPLACE
@@ -120,16 +116,20 @@ END
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDR_EXTRAICONS          BITMAP                  "res\\ExtraIcons.bmp"
+
 IDB_STRUCTURE           BITMAP                  "res\\struct.bmp"
+
 IDB_WORDSTATES          BITMAP                  "res\\wordstat.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_MAINFRAME MENU 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -150,8 +150,7 @@ BEGIN
         MENUITEM SEPARATOR
         POPUP "&Recent Files"
         BEGIN
-            MENUITEM "No Recent Files",             ID_FILE_MRU_FIRST
-            , INACTIVE
+            MENUITEM "No Recent Files",             ID_FILE_MRU_FIRST, INACTIVE
         END
         MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_APP_EXIT
@@ -240,28 +239,26 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\FBE.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG  0, 0, 118, 132
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_ABOUTBOX DIALOG 0, 0, 118, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 9, "Tahoma"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,34,111,50,14
-    CTEXT           "FictionBook Editor v1.0\n\n(c) Copyright 2003 Mike Matsnev",
-                    IDC_STATIC,7,28,104,32
+    CTEXT           "FictionBook Editor v1.0\n\n(c) Copyright 2003 Mike Matsnev",IDC_STATIC,7,28,104,32
     ICON            IDR_MAINFRAME,IDC_STATIC,49,7,20,20
     CTEXT           "Built on",IDC_STATIC,7,66,104,8
     CTEXT           "",IDC_BUILDSTAMP,7,79,104,20
 END
 
-IDD_INPUTBOX DIALOG  0, 0, 288, 46
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_INPUTBOX DIALOG 0, 0, 288, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Input"
 FONT 9, "Tahoma"
 BEGIN
@@ -271,9 +268,8 @@ BEGIN
     PUSHBUTTON      "Cancel",IDCANCEL,231,24,50,14
 END
 
-IDD_OPTIONS DIALOG  0, 0, 283, 64
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_OPTIONS DIALOG 0, 0, 283, 64
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Display Options"
 FONT 9, "Tahoma"
 BEGIN
@@ -282,103 +278,78 @@ BEGIN
     LTEXT           "Background:",IDC_STATIC,7,27,54,8
     PUSHBUTTON      "",IDC_BG,63,25,35,14
     LTEXT           "Editor font:",IDC_STATIC,111,9,42,8
-    COMBOBOX        IDC_FONT,156,7,120,70,CBS_DROPDOWNLIST | CBS_SORT | 
-                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_FONT,156,7,120,70,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     LTEXT           "Font size:",IDC_STATIC,111,27,42,8
-    COMBOBOX        IDC_FONT_SIZE,156,25,48,70,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_TABSTOP
+    COMBOBOX        IDC_FONT_SIZE,156,25,48,70,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     DEFPUSHBUTTON   "OK",IDOK,171,43,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,226,43,50,14
 END
 
-IDD_REPLACE DIALOG  0, 0, 295, 87
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_REPLACE DIALOG 0, 0, 295, 87
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Replace"
 FONT 9, "Tahoma"
 BEGIN
     LTEXT           "Fi&nd what:",IDC_STATIC,7,9,45,8,NOT WS_GROUP
-    COMBOBOX        IDC_TEXT,53,7,179,62,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_TABSTOP
+    COMBOBOX        IDC_TEXT,53,7,179,62,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     LTEXT           "Replace with:",IDC_STATIC,7,25,45,8,NOT WS_GROUP
-    COMBOBOX        IDC_REPLACE,53,23,179,62,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_TABSTOP
-    CONTROL         "Match &whole words",IDC_WHOLE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,41,98,13
-    CONTROL         "Match &case",IDC_MATCHCASE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,54,98,13
-    CONTROL         "Regular &expression",IDC_REGEXP,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,67,98,13
+    COMBOBOX        IDC_REPLACE,53,23,179,62,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Match &whole words",IDC_WHOLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,41,98,13
+    CONTROL         "Match &case",IDC_MATCHCASE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,54,98,13
+    CONTROL         "Regular &expression",IDC_REGEXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,67,98,13
     DEFPUSHBUTTON   "&Find Next",IDOK,238,7,50,14,WS_GROUP
     PUSHBUTTON      "&Replace",IDC_REPLACE_ONE,238,25,50,14
     PUSHBUTTON      "Replace &All",IDC_REPLACE_ALL,238,43,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,238,61,50,14
 END
 
-IDD_FIND DIALOG  0, 0, 295, 76
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_FIND DIALOG 0, 0, 295, 76
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Find"
 FONT 9, "Tahoma"
 BEGIN
     LTEXT           "Fi&nd what:",IDC_STATIC,7,9,40,8
-    COMBOBOX        IDC_TEXT,49,7,183,62,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_GROUP | WS_TABSTOP
-    CONTROL         "Match &whole words",IDC_WHOLE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,30,98,13
-    CONTROL         "Match &case",IDC_MATCHCASE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,43,98,13
-    CONTROL         "Regular &expression",IDC_REGEXP,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,56,98,13
+    COMBOBOX        IDC_TEXT,49,7,183,62,CBS_DROPDOWN | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    CONTROL         "Match &whole words",IDC_WHOLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,30,98,13
+    CONTROL         "Match &case",IDC_MATCHCASE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,43,98,13
+    CONTROL         "Regular &expression",IDC_REGEXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,56,98,13
     GROUPBOX        "Direction",IDC_STATIC,172,30,60,38,WS_GROUP
-    CONTROL         "&Up",IDC_UP,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
-                    179,41,44,11
-    CONTROL         "&Down",IDC_DOWN,"Button",BS_AUTORADIOBUTTON,179,52,44,
-                    11
+    CONTROL         "&Up",IDC_UP,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,179,41,44,11
+    CONTROL         "&Down",IDC_DOWN,"Button",BS_AUTORADIOBUTTON,179,52,44,11
     DEFPUSHBUTTON   "&Find Next",IDOK,238,7,50,14,WS_GROUP
     PUSHBUTTON      "Cancel",IDCANCEL,238,24,50,14
 END
 
-IDD_CUSTOMSAVEDLG DIALOG  0, 0, 300, 18
-STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS | 
-    WS_CLIPCHILDREN
+IDD_CUSTOMSAVEDLG DIALOG 0, 0, 300, 18
+STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN
 FONT 8, "Tahoma"
 BEGIN
     LTEXT           "Encoding:",IDC_STATIC,68,2,41,10
-    COMBOBOX        IDC_ENCODING,130,0,164,104,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_TABSTOP
+    COMBOBOX        IDC_ENCODING,130,0,164,104,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
 END
 
 IDD_WORDS DIALOGEX 0, 0, 314, 241
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Words"
 FONT 9, "Tahoma", 0, 0, 0x1
 BEGIN
-    CONTROL         "List1",IDC_WLIST,"SysListView32",LVS_REPORT | 
-                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,7,7,302,208,
-                    WS_EX_CLIENTEDGE
+    CONTROL         "List1",IDC_WLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,7,7,302,208,WS_EX_CLIENTEDGE
     DEFPUSHBUTTON   "OK",IDOK,221,220,40,14
     PUSHBUTTON      "Cancel",IDCANCEL,269,220,40,14
-    EDITTEXT        IDC_REDIT,7,224,41,10,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
-                    NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_REDIT,7,224,41,10,ES_AUTOHSCROLL | NOT WS_VISIBLE | NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
 END
 
-IDD_TOOLS_OPTIONS DIALOG  0, 0, 195, 71
-STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
-    WS_SYSMENU
+IDD_TOOLS_OPTIONS DIALOG 0, 0, 195, 71
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Options"
 FONT 9, "Tahoma"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,83,50,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,138,50,50,14
     GROUPBOX        "XML source editor",IDC_STATIC,7,3,181,43
-    CONTROL         "Wrap lines",IDC_WRAP,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,13,12,48,10
-    CONTROL         "Syntax highlighting",IDC_SYNTAXHL,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,13,22,75,10
-    CONTROL         "Show end of line marks",IDC_SHOWEOL,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,13,32,89,10
+    CONTROL         "Wrap lines",IDC_WRAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,12,48,10
+    CONTROL         "Syntax highlighting",IDC_SYNTAXHL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,22,75,10
+    CONTROL         "Show end of line marks",IDC_SHOWEOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,32,89,10
 END
 
 
@@ -388,7 +359,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -451,7 +422,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "A",            ID_STYLE_TEXTAUTHOR,    VIRTKEY, ALT, NOINVERT
     "B",            ID_EDIT_ADD_BODY,       VIRTKEY, CONTROL, NOINVERT
@@ -507,8 +478,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,1
- PRODUCTVERSION 1,0,0,1
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -523,14 +494,14 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "Haali"
+            VALUE "CompanyName", "evpobr"
             VALUE "FileDescription", "FictionBook Editor"
-            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "FBE"
-            VALUE "LegalCopyright", "Copyright 2002 Mike Matsnev"
+            VALUE "LegalCopyright", "Copyright 2002 Mike Matsnev, 2015-2016 evpobr"
             VALUE "OriginalFilename", "FBE.exe"
-            VALUE "ProductName", "FictionBook Editor"
-            VALUE "ProductVersion", "1, 0, 0, 1"
+            VALUE "ProductName", "FB2Tools"
+            VALUE "ProductVersion", "1.0.0.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -545,22 +516,22 @@ END
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "FBE"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ATL_IDS_IDLEMESSAGE     "Ready"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_PANE_INS             "OVR"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "Create a new document\nNew"
     ID_FILE_OPEN            "Open an existing document\nOpen"
@@ -568,19 +539,19 @@ BEGIN
     ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ATL_IDS_MRU_FILE        "Open this document"
     IDS_ENCODINGS           "utf-8,utf-16,windows-1251,windows-1252,iso-8859-1,iso-8859-2,iso-8859-5,iso-8859-15,koi8-r"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
     ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
@@ -591,7 +562,7 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_STYLE_LINK           "Add a hyperlink\nHyperlink"
     ID_STYLE_NOTE           "Add a footnote\nFootnote"
@@ -602,13 +573,13 @@ BEGIN
     ID_EDIT_ADDBINARY       "Add a new binary object to the document\nAdd binary object"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_BOLD            "Marks the selection ""strong"" (toggle)\nStrong"
     ID_EDIT_ITALIC          "Marks the selection ""emphasis"" (toggle)\nEmphasis"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_STYLE_NORMAL         "Normal paragraph style\nNormal"
     ID_STYLE_TEXTAUTHOR     "Text author paragraph style\nText author"
@@ -616,23 +587,23 @@ BEGIN
     ID_VIEW_OPTIONS         "Display options\nDisplay options"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     60161                   "Show or hide the toolbar\nToggle ToolBar"
     60162                   "Show or hide the links bar\nToggle LinksBar"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TREE            "Show or hide the document tree\nToggle document tree"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_ADD_TITLE       "Add a title to the selected object\nAdd title"
     ID_EDIT_ADD_BODY        "Add a new body to the document\nAdd body"
@@ -646,13 +617,13 @@ BEGIN
     ID_EDIT_INS_POEM        "Replace selection with a poem container\nInsert poem"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_ADD_TA          "Add a text author paragraph to the selected container\nAdd text author"
     ID_EDIT_MERGE           "Merge selected container with next\nMerge containers"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
