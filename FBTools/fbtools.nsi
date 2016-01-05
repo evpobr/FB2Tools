@@ -124,32 +124,32 @@ nthere:
   MessageBox MB_OK|MB_ICONSTOP "FB shell intergation dll was in use and could not be overwritten.$\r$\nPlease logout and logon again, and restart this installation."
   Quit
 nodll:
-  File "..\FBShell\Release\FBShell.dll"
+  File "..\Release\FBShell.dll"
 
   ; m$' runtime lib
-  File "C:\WINDOWS\System32\msvcr71.dll"
+  ; File "C:\WINDOWS\System32\msvcr71.dll"
 
   RegDll "$INSTDIR\FBShell.dll"
 
   ; fictionbook validator
-  File "..\FBV\Release\FBV.exe"
-  File "..\FBE\FictionBook.xsd"
-  File "..\FBE\FictionBookLinks.xsd"
-  File "..\FBE\FictionBookLang.xsd"
-  File "..\FBE\FictionBookGenres.xsd"
+  File "..\Release\FBV.exe"
+  File "..\Release\FictionBook.xsd"
+  File "..\Release\FictionBookLinks.xsd"
+  File "..\Release\FictionBookLang.xsd"
+  File "..\Release\FictionBookGenres.xsd"
 
   ; editor
-  File "..\FBE\Release\FBE.exe"
-  File "..\scintilla\bin\SciLexer.dll"
-  File "..\FBE\body.xsl"
-  File "..\FBE\body.js"
-  File "..\FBE\description.xsl"
-  File "..\FBE\desc.js"
-  File "..\FBE\genres.txt"
-  File "..\FBE\ExportHTML\Release\ExportHTML.dll"
-  File "..\FBE\ExportHTML\html.xsl"
-  File "..\FBE\res\imgph.png"
-  File "..\FBE\demo.js"
+  File "..\Release\FBE.exe"
+  File "..\Release\SciLexer.dll"
+  File "..\Release\body.xsl"
+  File "..\Release\body.js"
+  File "..\Release\description.xsl"
+  File "..\Release\desc.js"
+  File "..\Release\genres.txt"
+  File "..\Release\ExportHTML.dll"
+  File "..\Release\html.xsl"
+  File "..\Release\imgph.png"
+  File "..\Release\demo.js"
 
   CreateDirectory "$SMPROGRAMS\${NAME}"
   CreateShortCut "$SMPROGRAMS\${NAME}\FictionBook Editor.lnk" "$INSTDIR\FBE.exe" "" "$INSTDIR\FBE.exe" 0
