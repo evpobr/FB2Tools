@@ -45,12 +45,12 @@ InstallDirRegKey HKLM "SOFTWARE\${VENDOR}\${NSPNAME}" "InstallDir"
 !insertmacro MUI_LANGUAGE "English"
 
 Function CheckMSXMLVersion
-  ReadRegStr $0 HKCR "Msxml2.SAXXMLReader.4.0\CLSID" ""
+  ReadRegStr $0 HKCR "Msxml2.SAXXMLReader.6.0\CLSID" ""
   StrCmp $0 "" noxml
   ReadRegStr $1 HKCR "CLSID\$0\ProgID" ""
-  StrCmp $1 "Msxml2.SAXXMLReader.4.0" ok
+  StrCmp $1 "Msxml2.SAXXMLReader.6.0" ok
 noxml:
-  MessageBox MB_OK|MB_ICONSTOP "This application requires Microsoft XML Parser version 4.0 or newer to run."
+  MessageBox MB_OK|MB_ICONSTOP "This application requires Microsoft Core XML Services (MSXML) 6.0 or newer to run."
   Quit
 ok:
 FunctionEnd  
