@@ -153,6 +153,7 @@
     <None Include="description.xsl" />
     <None Include="..\Distrib\Win32\SciLexer.dll" />
     <None Include="Genres.txt" />
-    <None Include="root_genres.xml" />
+    <None Include="demo.js" />
+    <None Include="res\imgph.png" />
   </ItemGroup>
 </Project>

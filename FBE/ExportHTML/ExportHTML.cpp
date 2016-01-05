@@ -4,46 +4,19 @@
 #include "utils.h"
 #include "FBE.h"
 
-#include "ExportHTML.h"
-
-#include <initguid.h>
-
-// {E242A6D3-84BF-4285-9FAA-160F95370668}
-DEFINE_GUID(CLSID_ExportHTMLPlugin, 
-0xe242a6d3, 0x84bf, 0x4285, 0x9f, 0xaa, 0x16, 0xf, 0x95, 0x37, 0x6, 0x68);
+#include "ExportHTMLPlugin.h"
+#include "dllmain.h"
 
 CComModule  _Module;
 CRegKey	    _Settings;
 CString	    _SettingsPath;
-
-BEGIN_OBJECT_MAP(ObjectMap)
-  OBJECT_ENTRY(CLSID_ExportHTMLPlugin, ExportHTMLPlugin)
-END_OBJECT_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// DLL Entry Point
-
-extern "C"
-BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
-{
-  if (dwReason == DLL_PROCESS_ATTACH)
-  {
-    _Module.Init(ObjectMap, hInstance);
-    DisableThreadLibraryCalls(hInstance);
-    U::InitSettings();
-  }
-  else if (dwReason == DLL_PROCESS_DETACH) {
-    _Module.Term();
-  }
-  return TRUE;    // ok
-}
 
 /////////////////////////////////////////////////////////////////////////////
 // Used to determine whether the DLL can be unloaded by OLE
 
 STDAPI DllCanUnloadNow(void)
 {
-  return (_Module.GetLockCount()==0) ? S_OK : S_FALSE;
+	return _AtlModule.DllCanUnloadNow();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -51,7 +24,7 @@ STDAPI DllCanUnloadNow(void)
 
 STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 {
-  return _Module.GetClassObject(rclsid, riid, ppv);
+	return _AtlModule.DllGetClassObject(rclsid, riid, ppv);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -59,8 +32,8 @@ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 
 STDAPI DllRegisterServer(void)
 {
-  // registers object, typelib and all interfaces in typelib
-  return _Module.RegisterServer();
+	HRESULT hr = _AtlModule.DllRegisterServer(FALSE);
+	return hr;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -68,5 +41,36 @@ STDAPI DllRegisterServer(void)
 
 STDAPI DllUnregisterServer(void)
 {
-  return _Module.UnregisterServer();
+	HRESULT hr = _AtlModule.DllUnregisterServer(FALSE);
+	return hr;
+}
+
+// DllInstall - Adds/Removes entries to the system registry per user per machine.
+STDAPI DllInstall(BOOL bInstall, _In_opt_  LPCWSTR pszCmdLine)
+{
+	HRESULT hr = E_FAIL;
+	static const wchar_t szUserSwitch[] = L"user";
+
+	if (pszCmdLine != NULL)
+	{
+		if (_wcsnicmp(pszCmdLine, szUserSwitch, _countof(szUserSwitch)) == 0)
+		{
+			ATL::AtlSetPerUserRegistration(true);
+		}
+	}
+
+	if (bInstall)
+	{
+		hr = DllRegisterServer();
+		if (FAILED(hr))
+		{
+			DllUnregisterServer();
+		}
+	}
+	else
+	{
+		hr = DllUnregisterServer();
+	}
+
+	return hr;
 }

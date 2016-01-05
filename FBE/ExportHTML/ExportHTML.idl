@@ -1,0 +1,18 @@
+import "oaidl.idl";
+import "ocidl.idl";
+import "..\fbe.idl";
+
+[
+	uuid("8C5D05FC-220E-417E-921D-7BFE19852219"),
+	version(1.0)
+]
+library ExportHTMLLib
+{
+	[
+		uuid("E242A6D3-84BF-4285-9FAA-160F95370668")
+	]
+	coclass ExportHTMLPlugin
+	{
+		[default] interface IFBEExportPlugin;
+	}
+}
